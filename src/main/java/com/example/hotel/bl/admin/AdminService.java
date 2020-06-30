@@ -15,7 +15,7 @@ public interface AdminService {
 
     /**
      * 添加酒店管理人员账号
-     * @param userForm
+     * @param userForm yeye
      * @return
      */
     ResponseVO addManager(UserForm userForm);
