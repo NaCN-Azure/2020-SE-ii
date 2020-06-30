@@ -30,3 +30,13 @@ export function updateUserInfoAPI(data) {
         data
     })
 }
+
+export function enrollVIPAPI(data) {
+    console.log(data)
+    return axios({
+        url: `${api.userPre}/${data.id}/enrollVIPAPI`,
+        method: 'POST',
+        data
+    })
+}
+

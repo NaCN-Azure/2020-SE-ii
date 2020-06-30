@@ -1,6 +1,7 @@
 package com.example.hotel.bl.order;
 
 import com.example.hotel.po.Order;
+import com.example.hotel.vo.HistoryCommentVO;
 import com.example.hotel.vo.OrderVO;
 import com.example.hotel.vo.ResponseVO;
 
@@ -38,5 +39,26 @@ public interface OrderService {
      * @return
      */
     ResponseVO annulOrder(int orderid);
+
+    /**
+     * 更改订单
+     * @param orderVO
+     * @return
+     */
+    ResponseVO changeOrder(OrderVO orderVO);
+
+    /**
+     * 删除
+     * @param orderid
+     * @return
+     */
+
+    ResponseVO deleteOrder(int orderid);
+
+    ResponseVO confirmOrder(int orderid);
+
+    List<Order> getHotelOrders(Integer hotelid);
+
+    ResponseVO addComment(HistoryCommentVO historyCommentVO);
 
 }

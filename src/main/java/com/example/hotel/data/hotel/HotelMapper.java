@@ -12,9 +12,15 @@ import java.util.List;
 @Repository
 public interface HotelMapper {
 
+    int updateHotelInfo(@Param("id") int id, @Param("hotelName") String hotelName, @Param("hotelStar")int hotelStar,@Param("address")String address,@Param("hotelDescription")String hotelDescription);
+
     int insertHotel(Hotel hotel);
 
     List<HotelVO> selectAllHotel();
 
     HotelVO selectById(@Param("id") Integer id);
+
+    boolean deleteHotel(@Param("id") Integer id);
+
+
 }

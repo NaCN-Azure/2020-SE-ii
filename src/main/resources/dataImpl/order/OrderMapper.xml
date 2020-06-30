@@ -15,9 +15,23 @@
     <select id="getOrderById" resultMap="Order">
         select * from OrderList where id=#{orderid}
     </select>
+
+    <select id="getHotelOrders" resultMap="Order">
+        select * from OrderList where hotelId=#{hotelid}
+    </select>
+
    <!--取消订单的数据库操作-->
+    <update id="annulOrder">
+        update OrderList set orderstate='已撤销' where id=#{orderid}
+    </update>
 
+    <delete id="deleteOrder">
+        delete  from OrderList where id=#{orderid}
+    </delete>
 
+    <update id="confirmOrder">
+        update OrderList set orderstate='已入住' where id=#{orderid}
+    </update>
 
     <resultMap id="Order" type="com.example.hotel.po.Order">
     </resultMap>

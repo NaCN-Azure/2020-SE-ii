@@ -28,4 +28,8 @@ public interface CouponService {
      * @return
      */
     CouponVO addHotelTargetMoneyCoupon(HotelTargetMoneyCouponVO couponVO);
+
+    void updateCouponInfo(CouponVO couponVO);
+
+    void deleteCoupon(Integer id);
 }

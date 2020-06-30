@@ -1,7 +1,8 @@
 package com.example.hotel.po;
 
 import com.example.hotel.enums.BizRegion;
-import com.example.hotel.enums.HotelStar;
+
+import java.util.List;
 
 public class Hotel {
     private Integer id;
@@ -11,7 +12,7 @@ public class Hotel {
      * 商圈
      */
     private BizRegion bizRegion;
-    private HotelStar hotelStar;
+    private int hotelStar;
     private Double rate;
     private String description;
     private String phoneNum;
@@ -19,6 +20,15 @@ public class Hotel {
      * 酒店管理员id
      */
     private Integer managerId;
+    private List<HistoryComment> historyComments;
+
+    public void setHistoryComment(List<HistoryComment> historyComments) {
+        this.historyComments = historyComments;
+    }
+
+    public List<HistoryComment> getHistoryComments() {
+        return historyComments;
+    }
 
     public Integer getId() {
         return id;
@@ -52,11 +62,11 @@ public class Hotel {
         this.bizRegion = bizRegion;
     }
 
-    public HotelStar getHotelStar() {
+    public int getHotelStar() {
         return hotelStar;
     }
 
-    public void setHotelStar(HotelStar hotelStar) {
+    public void setHotelStar(int hotelStar) {
         this.hotelStar = hotelStar;
     }
 

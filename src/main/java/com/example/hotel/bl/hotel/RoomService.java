@@ -19,6 +19,10 @@ public interface RoomService {
      */
     void insertRoomInfo(HotelRoom hotelRoom);
 
+    void changeRoom(HotelRoom hotelRoom);
+
+    int deleteRoom(Integer id);
+
     /**
      * 预订酒店后更新客房房间数量
      * @param hotelId
@@ -34,4 +38,6 @@ public interface RoomService {
      * @return
      */
     int getRoomCurNum(Integer hotelId, String roomType);
+
+    List<HotelRoom> getHotelAllRooms(Integer hotelId);
 }

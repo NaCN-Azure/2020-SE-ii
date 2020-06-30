@@ -23,12 +23,27 @@ public class AccountServiceImpl implements AccountService {
         User user = new User();
         BeanUtils.copyProperties(userVO,user);
         try {
+            user.setHotelid(-1);
             accountMapper.createNewAccount(user);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseVO.buildFailure(ACCOUNT_EXIST);
         }
         return ResponseVO.buildSuccess();
+    }
+
+
+    @Override
+    public ResponseVO registervip(UserVO userVO)
+    {
+        User user = new User();
+        BeanUtils.copyProperties(userVO,user);
+        user.setCorporationName(userVO.getCorporationName());
+        user.setIsVIP(userVO.getIsVIP());
+        int userid=user.getId();
+        accountMapper.updateVIPII(user);
+        return ResponseVO.buildSuccess();
+
     }
 
     @Override
@@ -50,13 +65,32 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ResponseVO updateUserInfo(int id, String password, String username, String phonenumber) {
+    public ResponseVO updateUserInfo(int id, String password, String username, String phonenumber,String birthday) {
         try {
-            accountMapper.updateAccount(id, password, username, phonenumber);
+            accountMapper.updateAccount(id, password, username, phonenumber,birthday);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseVO.buildFailure(UPDATE_ERROR);
         }
         return ResponseVO.buildSuccess(true);
     }
+
+    @Override
+    public ResponseVO addCredit(UserVO userVO)
+    {
+        System.out.println(userVO.getId());
+
+
+        int id=userVO.getId();
+        double credit=userVO.getCredit();
+        accountMapper.addCredit(id,credit);
+        System.out.println("chaomo3");
+
+
+        return ResponseVO.buildSuccess(true);
+
+
+
+    }
+
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.hotel.data.hotel.CommentMapper">
+
+    <insert id="addComment" parameterType="com.example.hotel.po.HistoryComment"
+    useGeneratedKeys="true" keyProperty="id">
+        insert into Comment(userName,rate,color,credit,content,hotel_id,user_id,order_id)
+        values (#{userName},#{rate},#{color},#{credit},#{content},#{hotelId},#{userId},#{orderId})
+    </insert>
+
+
+    <select id="selectAllComments" resultMap="comment">
+        select * from Comment where hotel_id=#{hotelId}
+    </select>
+
+
+    <resultMap id="comment" type="com.example.hotel.po.HistoryComment">
+        <id column="id" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="rate" property="rate"></result>
+        <result column="color" property="color"></result>
+        <result column="credit" property="credit"></result>
+        <result column="content" property="content"></result>
+        <result column="hotel_id" property="hotelId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="order_id" property="orderId"></result>
+    </resultMap>
+
+
+</mapper>

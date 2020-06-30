@@ -171,7 +171,7 @@ export default {
             totalPrice: '',
             columns,
             checkedList: [],
-            finalPrice: ''
+
         }
     },
     computed: {
@@ -183,6 +183,21 @@ export default {
             'userId',
             'orderMatchCouponList'
         ]),
+        finalPrice: {
+            get:function () {
+                var temp= this.totalPrice
+                if(this.checkedList.length>0){
+                    this.orderMatchCouponList.filter(item => this.checkedList.indexOf(item.id)!=-1).forEach(item => temp= temp-item.discountMoney)
+                }else{
+
+                }
+                return temp
+            },
+            set:function (v) {
+                this.finalPrice=v
+            }
+        }
+
         
     },
     beforeCreate() {
@@ -253,6 +268,8 @@ export default {
                 checkIn: moment(this.form.getFieldValue('date')[0]).format('YYYY-MM-DD'),
                 checkOut: moment(this.form.getFieldValue('date')[1]).format('YYYY-MM-DD'),
             }
+            console.log(this.totalPrice)
+            console.log(data)
             this.getOrderMatchCoupons(data)
         }
     }

@@ -84,6 +84,19 @@
               <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
+          <a-form-item>
+            <a-date-picker
+                    size="large"
+                    format="YYYY-MM-DD"
+                    v-decorator="[
+                        'date',
+                        {
+                            rules: [{ required: true, message: '请输入出生日期' }]
+                        }
+                    ]"
+                    :placeholder="'出生日期'"
+            />
+          </a-form-item>
            <a-form-item>
             <a-input
               size="large"
@@ -236,6 +249,7 @@ export default {
             password: this.form.getFieldValue('registerPassword'),
             phoneNumber: this.form.getFieldValue('registerPhoneNumber'),
             username: this.form.getFieldValue('registerUsername'),
+            birthday: this.form.getFieldValue('date').format('YYYY-MM-DD'),
             credit: 100,
             userType: 1
           }

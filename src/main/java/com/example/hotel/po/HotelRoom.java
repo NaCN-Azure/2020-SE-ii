@@ -1,5 +1,6 @@
 package com.example.hotel.po;
 
+import com.example.hotel.enums.Breakfast;
 import com.example.hotel.enums.RoomType;
 
 public class HotelRoom {
@@ -7,6 +8,8 @@ public class HotelRoom {
     private RoomType roomType;
     private Integer hotelId;
     private double price;
+    private Breakfast breakfast;
+    private Integer peopleNum;
     /**
      * 当前剩余可预定房间数
      */
@@ -15,6 +18,22 @@ public class HotelRoom {
      * 某类型房间总数
      */
     private int total;
+
+    public Integer getPeopleNum() {
+        return peopleNum;
+    }
+
+    public void setPeopleNum(Integer peopleNum) {
+        this.peopleNum = peopleNum;
+    }
+
+    public Breakfast getBreakfast() {
+        return breakfast;
+    }
+
+    public void setBreakfast(Breakfast breakfast) {
+        this.breakfast = breakfast;
+    }
 
     public Integer getId() {
         return id;

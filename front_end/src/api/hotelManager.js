@@ -16,3 +16,19 @@ export function addHotelAPI(data) {
         data,
     })
 }
+export function deleteRoomAPI(data) {
+    console.log(data)
+    return axios({
+        url: `${api.hotelPre}/deleteRoomAPI`,
+        method: 'POST',
+        params: {id: data},
+    })
+}
+export function hotelAllRoomsAPI(hotelId) {
+    console.log('here')
+    return axios({
+        url: `${api.hotelPre}/hotelAllRooms`,
+        method: 'GET',
+        params: {hotelId: hotelId},
+    })
+}

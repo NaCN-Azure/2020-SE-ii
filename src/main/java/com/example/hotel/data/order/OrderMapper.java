@@ -1,5 +1,6 @@
 package com.example.hotel.data.order;
 
+import com.example.hotel.po.HistoryComment;
 import com.example.hotel.po.Order;
 import com.example.hotel.vo.OrderVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,5 +26,13 @@ public interface OrderMapper {
     int annulOrder(@Param("orderid") int orderid);
 
     Order getOrderById(@Param("orderid") int orderid);
+
+    int deleteOrder(@Param("orderid") int orderid);
+
+    int confirmOrder(@Param("orderid") int orderid);
+
+    List<Order> getHotelOrders(@Param("hotelid") int hotelid);
+
+
 
 }

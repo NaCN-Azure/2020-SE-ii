@@ -41,30 +41,30 @@ public class Coupon {
     /**
      * 可用时间
      */
-    private LocalDateTime startTime;
+    private String startTime;
     /**
      * 失效时间
      */
-    private LocalDateTime endTime;
+    private String endTime;
 
     /**
      * 优惠券状态 是否已经失效 1可用 0失效
      */
     private Integer status;
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

@@ -1,7 +1,7 @@
 <template>
     <a-modal
         :visible="addManagerModalVisible"
-        title="添加用户"
+        title="添加酒店经理"
         cancelText="取消"
         okText="确定"
         @cancel="cancel"
@@ -24,6 +24,22 @@
                     ]"
                 />
             </a-form-item >
+        <a-form-item v-bind="formItemLayout" label="用户名">
+            <a-input
+                    v-decorator="[
+                        'name',
+                        { rules: [{required: true, message: '请输入用户名字', }] }
+                    ]"
+            />
+        </a-form-item >
+        <a-form-item v-bind="formItemLayout" label="酒店编号">
+            <a-input
+                    v-decorator="[
+                        'hotelid',
+                        { rules: [{required: true, message: '请输入酒店id', }] }
+                    ]"
+            />
+        </a-form-item >
     </a-Form>
     </a-modal>
 </template>
@@ -75,8 +91,11 @@ export default {
                 if (!err) {
                     const data = {
                         email: this.form.getFieldValue('email'),
-                        password: this.form.getFieldValue('password')
+                        password: this.form.getFieldValue('password'),
+                        userName: this.form.getFieldValue('name'),
+                        hotelid: this.form.getFieldValue('hotelid'),
                     }
+
                     this.set_addManagerParams(data)
                     this.addManager()
                 }

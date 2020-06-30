@@ -3,6 +3,7 @@ const api = {
     couponPre: '/api/coupon'
 }
 export function hotelTargetMoneyAPI(data) {
+    console.log(data)
     return axios({
         url: `${api.couponPre}/hotelTargetMoney`,
         method: 'POST',
@@ -22,6 +23,14 @@ export function orderMatchCouponsAPI(params) {
     return axios({
         url: `${api.couponPre}/orderMatchCoupons`,
         method: 'GET',
+        params,
+    })
+}
+
+export function updateCouponAPI(params) {
+    return axios({
+        url: `${api.couponPre}/updateCouponInfo`,
+        method: 'POST',
         params,
     })
 }

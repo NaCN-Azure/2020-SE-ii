@@ -59,6 +59,7 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public List<Coupon> getHotelAllCoupon(Integer hotelId) {
         List<Coupon> hotelCoupons = couponMapper.selectByHotelId(hotelId);
+        System.out.println(hotelCoupons);
         return hotelCoupons;
     }
 
@@ -71,9 +72,31 @@ public class CouponServiceImpl implements CouponService {
         coupon.setTargetMoney(couponVO.getTargetMoney());
         coupon.setHotelId(couponVO.getHotelId());
         coupon.setDiscountMoney(couponVO.getDiscountMoney());
+        coupon.setStartTime(couponVO.getStartTime());
+        coupon.setEndTime(couponVO.getEndTime());
         coupon.setStatus(1);
         int result = couponMapper.insertCoupon(coupon);
         couponVO.setId(result);
         return couponVO;
+    }
+
+    @Override
+    public void updateCouponInfo(CouponVO couponVO){
+        System.out.println("114514 1919810");
+        Coupon coupon=new Coupon();
+        coupon.setCouponName(couponVO.getName());
+        coupon.setDescription(couponVO.getDescription());
+        coupon.setCouponType(couponVO.getType());
+        coupon.setStartTime(couponVO.getStartTime());
+        coupon.setEndTime(couponVO.getEndTime());
+        coupon.setStatus(couponVO.getStatus());
+        coupon.setId(couponVO.getId());
+        couponMapper.updateCoupon(coupon.getId(),coupon.getDescription(),coupon.getCouponName(),coupon.getCouponType(),
+                   coupon.getStatus(),coupon.getStartTime(),coupon.getEndTime());
+    }
+
+    @Override
+    public void deleteCoupon(Integer id){
+        couponMapper.deleteCoupon(id);
     }
 }

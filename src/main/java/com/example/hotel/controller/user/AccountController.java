@@ -42,11 +42,27 @@ public class AccountController {
         }
         return ResponseVO.buildSuccess(user);
     }
+    @GetMapping("/getUserInfo_Test")
+    public ResponseVO getUserInfo_Test() {
+
+        return ResponseVO.buildSuccess("..");
+    }
 
     @PostMapping("/{id}/userInfo/update")
     public ResponseVO updateInfo(@RequestBody UserInfoVO userInfoVO,@PathVariable int id){
-        return accountService.updateUserInfo(id,userInfoVO.getPassword(),userInfoVO.getUserName(),userInfoVO.getPhoneNumber());
+        return accountService.updateUserInfo(id,userInfoVO.getPassword(),userInfoVO.getUserName(),userInfoVO.getPhoneNumber(),userInfoVO.getBirthday());
 
     }
+
+    @PostMapping("/{id}/enrollVIPAPI")
+    public ResponseVO enrollVIP(@RequestBody UserVO userVO)
+
+    {
+        System.out.println("chaomo");
+        return accountService.registervip(userVO);
+
+    }
+
+
 
 }

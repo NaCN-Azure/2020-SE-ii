@@ -19,6 +19,10 @@ public interface AccountMapper {
      */
      int createNewAccount(User user);
 
+     int registervip(User user);
+
+     int deleteuser(@Param("userid") int userid);
+
     /**
      * 根据用户名查找账号
      * @param email
@@ -28,6 +32,8 @@ public interface AccountMapper {
 
      User getAccountById(@Param("id") int id);
 
+     int punishCredit(@Param("id") int id,@Param("credit") double credit);
+
     /**
      * 更新用户信息
      * @param id
@@ -36,7 +42,14 @@ public interface AccountMapper {
      * @param phonenumber
      * @return
      */
-     int updateAccount(@Param("id") int id, @Param("password") String password,@Param("userName") String username, @Param("phoneNumber") String phonenumber);
+     int updateAccount(@Param("id") int id, @Param("password") String password,@Param("userName") String username, @Param("phoneNumber") String phonenumber,@Param("birthday") String birthday);
 
+     int updateVIP(@Param("id") int id, @Param("password") String password,@Param("userName") String username, @Param("phoneNumber") String phonenumber,@Param("birthday") String birthday,@Param("isVIP") int isVIP,@Param("corporationName") String corpo );
+
+     int updateVIPII(User user);
+
+     int addCredit(@Param("id") int id,@Param("credit") double credit);
+
+    int plusCredit(@Param("id") int id,@Param("credit") double credit);
 
 }

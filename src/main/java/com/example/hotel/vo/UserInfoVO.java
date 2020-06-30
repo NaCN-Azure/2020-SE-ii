@@ -8,7 +8,15 @@ public class UserInfoVO {
     private String password;
     private String userName;
     private String phoneNumber;
+    private String birthday;
 
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
 
     public String getPassword() {
         return password;

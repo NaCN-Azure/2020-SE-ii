@@ -4,12 +4,25 @@
 
     <insert id="insertRoom" parameterType="com.example.hotel.po.HotelRoom"
     useGeneratedKeys="true" keyProperty="id">
-        insert into Room(roomType,price,curNum,total,hotel_id)
-        values (#{roomType},#{price},#{curNum},#{total},#{hotelId})
+        insert into Room(roomType,price,curNum,total,hotel_id,breakfast,peopleNum)
+        values (#{roomType},#{price},#{curNum},#{total},#{hotelId},#{breakfast},#{peopleNum})
     </insert>
 
     <select id="selectRoomsByHotelId" resultMap="room">
         select * from Room where hotel_id=#{hotelId}
+    </select>
+
+    <update id="changeRoom">
+        update Room set breakfast=#{breakfast},total=#{total},price=#{price},peopleNum=#{peopleNum}
+        where id=#{id} and hotelId=#{hotelId}
+    </update>
+
+    <delete id="deleteRoom">
+        delete from Room where id=#{id}
+    </delete>
+
+    <select id="selectRoomById" resultMap="room">
+        select * from Room where id=#{id}
     </select>
 
     <update id="updateRoomInfo">
@@ -28,6 +41,8 @@
         <result column="curNum" property="curNum"></result>
         <result column="total" property="total"></result>
         <result column="hotel_id" property="hotelId"></result>
+        <result column="breakfast" property="breakfast"></result>
+        <result column="peopleNum" property="peopleNum"></result>
     </resultMap>
 
 

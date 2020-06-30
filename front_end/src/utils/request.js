@@ -52,6 +52,7 @@ service.interceptors.response.use((response) => {
   switch (response.status) {
     case 200:
       if(response.data.success && response.data.success){
+        //console.log(response)
         return response.data.content
       }
       message.error(response.data.message)

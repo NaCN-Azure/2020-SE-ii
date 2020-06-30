@@ -11,6 +11,43 @@ public class User {
     private String phoneNumber;
     private double credit;
     private UserType userType;
+    private Integer hotelid;
+    private String birthday;
+    private String corporationName;
+    private Integer isVIP;
+
+    public void setIsVIP(Integer isVIP) {
+        this.isVIP = isVIP;
+    }
+
+    public Integer getIsVIP() {
+        return isVIP;
+    }
+
+    public void setCorporationName(String corporationName) {
+        this.corporationName = corporationName;
+    }
+
+
+    public String getCorporationName() {
+        return corporationName;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public Integer getHotelid() {
+        return hotelid;
+    }
+
+    public void setHotelid(Integer hotelid) {
+        this.hotelid = hotelid;
+    }
 
     public Integer getId() {
         return id;

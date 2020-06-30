@@ -8,12 +8,17 @@ import {
     registerAPI,
     getUserInfoAPI,
     updateUserInfoAPI,
+    enrollVIPAPI
 } from '@/api/user'
+
 
 import {
     getUserOrdersAPI,
     cancelOrderAPI,
+    commentAddApI,
+
 } from '@/api/order'
+import {dataToArray} from "ant-design-vue/lib/vc-drawer/src/utils";
 
 const getDefaultState = () => {
     return {
@@ -23,12 +28,36 @@ const getDefaultState = () => {
         },
         userOrderList: [
 
-        ]
+        ],
+
     }
 }
 
 const user = {
-    state : getDefaultState(),
+    state : {userId: '',
+        userInfo: {
+            hotelid:-1,
+            corporationName:""
+        },
+        enrollVIPVisible:false,
+        userOrderList: [
+        ],
+        addCommentVisible:false,
+        commentVisible:true,
+        activeOrderId:-1,
+        commentParams:{
+            userId:-1,
+            userName:"",
+            credit:100,
+            orderId:-1,
+            content:"",
+            rate:3,
+            hotelId:-1,
+            color:"",
+
+        }
+
+    },
 
     mutations: {
         reset_state: function(state) {
@@ -39,11 +68,25 @@ const user = {
             },
             state.userOrderList = []
         },
+        set_enrollVIPVisible:(state,data)=>{
+            state.enrollVIPVisible=data
+        },
         set_token: function(state, token){
             state.token = token
         },
         set_email: (state, data) => {
             state.email = data
+        },
+        set_addCommentVisible:(state,data)=>{
+
+            state.addCommentVisible=data
+
+        },
+        set_commentVisible:(state,data)=>{
+            state.commentVisible=data
+        },
+        set_activeOrderId:(state,data)=>{
+            state.activeOrderId=data
         },
         set_userId: (state, data) => {
             state.userId = data
@@ -56,20 +99,40 @@ const user = {
         },
         set_userOrderList: (state, data) => {
             state.userOrderList = data
-        }
+        },
+        set_commentParams:(state,data)=>{
+             state.commentParams={
+                 ...state.commentParams,
+                 ...data
+             }
+        },
     },
 
     actions: {
         login: async ({ dispatch, commit }, userData) => {
             const res = await loginAPI(userData)
             if(res){
+                console.log("er")
+                console.log(res)
                 setToken(res.id)
                 commit('set_userId', res.id)
                 dispatch('getUserInfo')
+                if(res.userType=="HotelManager")
+                    router.push( '/hotel/hotelDetail/'+ res.hotelid)
+                else if(res.userType=="Saler"){
+                    router.push('/saler/saler')
+                }
+                else if(res.userType=="Admin"){
+                    router.push('/admin/manageUser')
+                }
+                else
                 router.push('/hotel/hotelList')
+
             }
         },
+
         register: async({ commit }, data) => {
+            console.log(data)
             const res = await registerAPI(data)
             if(res){
                 message.success('注册成功')
@@ -106,6 +169,8 @@ const user = {
                 userId: Number(state.userId)
             }
             const res = await getUserOrdersAPI(data)
+            console.log("user")
+            console.log(res)
             if(res){
                 commit('set_userOrderList', res)
                 console.log(state.userOrderList)
@@ -133,7 +198,44 @@ const user = {
                 resolve()
             })
         },
+
+        addComment: async ({state,commit,dispatch})=>{
+            const res=await commentAddApI(state.commentParams)
+            console.log("addcomment",res)
+            if(res){
+                    commit('set_addCommentVisible',false)
+                    message.success('评论成功')
+                    dispatch('getUserOrders')
+                    commit('set_commentVisible',true)
+
+            }
+            else{
+                message.error('添加失败')
+            }
+        },
+        enrollVIPi:async ({state,commit,dispatch},data)=>{
+            let value;
+            if(data.corporationName==""){
+                value={'isVIP':1}
+            }
+            else {
+                value={...data}
+            }
+            const res=await enrollVIPAPI({
+                ...state.userInfo,
+                ...value
+            })
+            console.log(res)
+            if(!res){
+                commit('set_enrollVIPVisible',false)
+                message.success('注册成功')
+            }
+            else{
+                message.error('注册失败')
+            }
+
+        }
     }
 }
-
-export default user
+const  a=1;
+export default  user

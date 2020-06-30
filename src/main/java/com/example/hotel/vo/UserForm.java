@@ -13,8 +13,14 @@ public class UserForm {
      * 用户密码
      */
     private String password;
+    private String userName;
+    private int hotelid;
 
 
+    public String getUserName(){return userName;}
+    public void setUserName(String name){this.userName=name;}
+    public int getHotelid(){return this.hotelid;}
+    public void setHotelid(int hotelid){this.hotelid=hotelid;}
 
     public String getEmail() {
         return email;

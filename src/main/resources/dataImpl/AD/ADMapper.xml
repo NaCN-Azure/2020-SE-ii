@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel.data.AD.ADMapper">
+
+    <select id="getADs" resultMap="AD">
+        select * from AD
+    </select>
+
+
+    <insert id="insertAD" parameterType="com.example.hotel.po.AD"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into AD(id,uid,name,status,url,thumbUrl)
+        values(#{id},#{uid},#{name},#{status},#{url},#{thumbUrl})
+    </insert>
+
+
+    <resultMap id="AD" type="com.example.hotel.po.AD">
+        <result column="id" property="id"></result>
+        <result column="uid" property="uid"></result>
+        <result column="name" property="name"></result>
+        <result column="status" property="status"></result>
+        <result column="url" property="url"></result>
+        <result column="thumbUrl" property="thumbUrl"></result>
+
+    </resultMap>
+
+</mapper>

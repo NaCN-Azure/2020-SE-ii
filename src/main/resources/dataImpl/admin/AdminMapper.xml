@@ -2,12 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hotel.data.admin.AdminMapper">
     <insert id="addManager" parameterType="com.example.hotel.po.User" useGeneratedKeys="true" keyProperty="id">
-        insert into User(email,password,usertype)
-        values(#{email},#{password},#{userType})
+        insert into User(email,password,usertype,userName,hotelid)
+        values(#{email},#{password},#{userType},#{userName},#{hotelid})
     </insert>
+
+    <insert id="addUser" parameterType="com.example.hotel.po.User" useGeneratedKeys="true" keyProperty="id">
+        insert into User(email,password,username,phonenumber,credit,usertype,hotelid)
+        values(#{email},#{password},#{userName},#{phoneNumber},#{credit},#{userType},#{hotelid})
+    </insert>
+
     <select id="getAllManagers" resultMap="User">
         select * from User where usertype='HotelManager'
     </select>
+
+    <select id="getAllClient" resultMap="User">
+        select * from User where usertype='Client'
+    </select>
+
+    <delete id="deleteUser">
+        delete  from User where id=#{userid}
+    </delete>
 
 
     <resultMap id="User" type="com.example.hotel.po.User">

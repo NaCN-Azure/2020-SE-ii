@@ -1,11 +1,31 @@
 package com.example.hotel.vo;
 
+import java.time.LocalDateTime;
+
 public class CouponVO {
     private Integer id;
     private String description;
     private Integer status;
     private String name;
     private Integer type;
+    private String startTime;
+    private String endTime;
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
 
     public Integer getId() {
         return id;

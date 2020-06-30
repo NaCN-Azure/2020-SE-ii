@@ -1,10 +1,14 @@
 package com.example.hotel.bl.hotel;
 
+import com.example.hotel.po.HistoryComment;
+import com.example.hotel.po.HotelPic;
 import com.example.hotel.po.HotelRoom;
 import com.example.hotel.po.Order;
 import com.example.hotel.util.ServiceException;
 import com.example.hotel.vo.CouponVO;
+import com.example.hotel.vo.HotelPicVO;
 import com.example.hotel.vo.HotelVO;
+import com.example.hotel.vo.HistoryCommentVO;
 
 import java.util.List;
 
@@ -16,6 +20,8 @@ public interface HotelService {
      * @throws
      */
     void addHotel(HotelVO hotelVO) throws ServiceException;
+
+    void updateHotelInfo(HotelVO hotelVO);
 
 
     /**
@@ -32,6 +38,11 @@ public interface HotelService {
      */
     List<HotelVO> retrieveHotels();
 
+    List<HotelPicVO> getPiclist();
+
+    HotelPicVO getPicbyid(Integer id);
+
+
     /**
      * 获取某家酒店详细信息
      * @param hotelId
@@ -39,6 +50,7 @@ public interface HotelService {
      */
     HotelVO retrieveHotelDetails(Integer hotelId);
 
+    boolean deleteHotel(Integer hotelId);
     /**
      * 查看酒店剩余某种房间数量
      * @param hotelId
@@ -53,6 +65,13 @@ public interface HotelService {
      * @return
      */
     List<Order> getHotelOrders(Integer hotelId);
+
+    List<HotelVO> searchHotel(String key);
+
+    void updatePic(Integer id, String url);
+
+    void insertPic(HotelPic hotelPic);
+
 
 
 }

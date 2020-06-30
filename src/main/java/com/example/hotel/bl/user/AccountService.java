@@ -21,6 +21,8 @@ public interface AccountService {
      *
      * @return
      */
+
+    ResponseVO registervip(UserVO userVO);
     User login(UserForm userForm);
 
     /**
@@ -38,7 +40,11 @@ public interface AccountService {
      * @param phonenumber
      * @return
      */
-    ResponseVO updateUserInfo(int id, String password,String username,String phonenumber);
+    ResponseVO updateUserInfo(int id, String password,String username,String phonenumber,String birthday);
+
+    ResponseVO addCredit(UserVO userVO);
+
+
 
 
 }

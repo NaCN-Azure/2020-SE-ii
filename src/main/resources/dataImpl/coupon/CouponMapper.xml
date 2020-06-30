@@ -12,6 +12,14 @@
         select * from Coupon where hotelId=#{hotelId}
     </select>
 
+    <delete id="deleteCoupon">
+        delete from Coupon where id=#{id}
+    </delete>
+
+    <update id="updateCoupon">
+        update Coupon set description=#{description},couponName=#{couponName},couponType=#{couponType},status=#{status},start_time=#{start_time},end_time=#{end_time}
+        where id=#{id}
+    </update>
 
     <resultMap id="Coupon" type="com.example.hotel.po.Coupon">
         <result column="description" property="description"></result>
