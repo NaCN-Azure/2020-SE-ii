@@ -97,7 +97,7 @@
                     </a-tab-pane>
                     <a-tab-pane tab="历史评价" key="3">
                         <HistoryComment :comments="currentHotelInfo.historyCommentVOs"></HistoryComment>
-                        <HistoryComment :comments="listData"></HistoryComment>
+
 
                     </a-tab-pane>
                 </a-tabs>

@@ -1,4 +1,4 @@
-            package com.example.hotel.controller;
+package com.example.hotel.controller;
 
 import com.example.hotel.bl.coupon.CouponService;
 import com.example.hotel.bl.hotel.HotelService;
