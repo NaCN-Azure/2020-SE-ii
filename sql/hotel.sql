@@ -273,9 +273,7 @@ BEGIN;
 INSERT INTO `Comment` VALUES (1,'Flow Light',4,'#f52de8',100,'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',1,2,3),
                              (2,'Mr.Eight',4,'#7265e6',120,'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',1,2,4);
 /*!40000 ALTER TABLE `Comment` ENABLE
-    流
-流
-flow KEYS */;
+KEYS */;
 COMMIT;
 
 
