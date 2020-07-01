@@ -53,8 +53,20 @@ public interface HotelService {
 
     List<HotelVO> searchHotel(String key);
 
+    /**
+     * 根据区间信息搜索所有符合要求的酒店
+     * @param address,hotelStar,money,name,rate
+     * @return
+     */
+
 
     List<HotelVO> searchHotelbysection(String address,int[] hotelStar,int[] money,String name,int[] rate );
+
+    /**
+     * 更新酒店图片
+     * @param id,url
+     * @return
+     */
 
     void updatePic(Integer id, String url);
 

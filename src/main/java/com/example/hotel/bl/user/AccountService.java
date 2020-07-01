@@ -22,7 +22,7 @@ public interface AccountService {
      * @return
      */
 
-    ResponseVO registervip(UserVO userVO);
+
     User login(UserForm userForm);
 
     /**
@@ -42,9 +42,22 @@ public interface AccountService {
      */
     ResponseVO updateUserInfo(int id, String password,String username,String phonenumber,String birthday);
 
+    /**
+     * 增加信用值
+     * @param userVO
+     * @return
+     */
+
+
     ResponseVO addCredit(UserVO userVO);
 
+    /**
+     * 注册会员
+     * @param userVO
+     * @return
+     */
 
+    ResponseVO registervip(UserVO userVO);
 
 
 }

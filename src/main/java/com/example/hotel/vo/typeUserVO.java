@@ -1,6 +1,8 @@
 package com.example.hotel.vo;
 
 public class typeUserVO {
+
+    //updateyType决定对订单执行何种类型的操作
     public String updateType;
     private UserVO  user;
 

@@ -104,6 +104,20 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrders() {
         return orderMapper.getAllOrders();
     }
+    //集成测试用来检查获取所有订单列表的桩程序
+
+    public List<Order> getAllOrders_sub() {
+        List<Order> res=new ArrayList<>();
+        Order order=new Order();
+        order.setUserId(3);
+        order.setHotelName("dayue");
+        order.setHaveChild(true);
+        order.setCreateDate("2020-06-14");
+        order.setPrice(200.0);
+        res.add(order);
+        return res;
+    }
+
 
     @Override
     public List<Order> getUserOrders(int userid) {

@@ -14,6 +14,8 @@ import com.example.hotel.vo.SalerCouponVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class SalerServicelmpl implements SalerService {
@@ -76,6 +78,18 @@ public class SalerServicelmpl implements SalerService {
 
         return temp;
     }
+    //用来检查获得所有广告的桩程序
+    public List<AD> getAD_sub() {
+        List<AD> res=new ArrayList<>();
+        AD ad=new AD();
+        ad.setUid("111");
+        ad.setId(1);
+        ad.setUrl("123");
+        res.add(ad);
+        return res;
+    }
+
+
 
     @Override
 
@@ -91,6 +105,8 @@ public class SalerServicelmpl implements SalerService {
         adVO.setId(result);
         return adVO;
     }
+
+
 
     @Override
     public void deleteWebCoupon(Integer webCouponId){

@@ -55,6 +55,7 @@ public class CouponServiceImpl implements CouponService {
 
         return availAbleCoupons;
     }
+    //找到订单满足的所有优惠策略
 
     @Override
     public List<Coupon> getHotelAllCoupon(Integer hotelId) {
@@ -65,6 +66,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public CouponVO addHotelTargetMoneyCoupon(HotelTargetMoneyCouponVO couponVO) {
+        //首先把VO对象转换成插入到数据库中的PO对象
         Coupon coupon = new Coupon();
         coupon.setCouponName(couponVO.getName());
         coupon.setDescription(couponVO.getDescription());
@@ -82,7 +84,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public void updateCouponInfo(CouponVO couponVO){
-        System.out.println("114514 1919810");
+        System.out.println("114514 1919810");//判断前后端接口是否顺利接上的测试代码
         Coupon coupon=new Coupon();
         coupon.setCouponName(couponVO.getName());
         coupon.setDescription(couponVO.getDescription());

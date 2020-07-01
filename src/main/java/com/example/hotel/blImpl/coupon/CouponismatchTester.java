@@ -34,7 +34,7 @@ public class CouponismatchTester {
         TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy=new TargetMoneyCouponStrategyImpl();
         System.out.println(targetMoneyCouponStrategy.isMatch(orderVO,coupon));
     }
-
+//单元测试代码，验证订单与优惠策略的匹配结果是否正确
 
 
 }

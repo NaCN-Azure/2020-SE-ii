@@ -16,8 +16,8 @@ public class UserVO {
     private UserType userType;
     private Integer hotelid;
     private String birthday;
-    private Integer isVIP;
-    private String corporationName;
+    private Integer isVIP;// 0则代表不是会员，大于0的数字代表会员等级
+    private String corporationName;// 企业会员的企业名称
 
     public String getCorporationName() {
         return corporationName;

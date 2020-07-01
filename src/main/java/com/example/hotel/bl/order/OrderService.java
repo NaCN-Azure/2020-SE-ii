@@ -55,9 +55,21 @@ public interface OrderService {
 
     ResponseVO deleteOrder(int orderid);
 
+    /**
+     * 确认订单
+     * @param orderid
+     * @return
+     */
+
     ResponseVO confirmOrder(int orderid);
 
     List<Order> getHotelOrders(Integer hotelid);
+
+    /**
+     * 添加历史评价
+     * @param historyCommentVO
+     * @return
+     */
 
     ResponseVO addComment(HistoryCommentVO historyCommentVO);
 

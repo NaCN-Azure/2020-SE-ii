@@ -96,4 +96,12 @@ public class RoomServiceImpl implements RoomService {
         }
         return total;
     }
+
+    //获得动态房间数目的桩程序
+
+    public int getRoomCurNum_sub(Integer hotelId, String roomType) {
+        return 1;
+    }
+
+
 }

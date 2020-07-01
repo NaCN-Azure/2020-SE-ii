@@ -79,10 +79,11 @@ public class HotelServiceImpl implements HotelService {
                 break;
             }
         }
+        //判断数据库中是否已经有持有该id的Picture
 
         if(label==1)
         {
-            picMapper.updatePic(id,url);
+            picMapper.updatePic(id,url);//如果有该id，只需要进行更新即可
         }
         else{
             HotelPic hotelPic=new HotelPic();
@@ -90,6 +91,7 @@ public class HotelServiceImpl implements HotelService {
             hotelPic.setUrl(url);
             picMapper.insertPic(hotelPic);
         }
+        //如果没有该id，则数据库中要执行插入操作
 
 
     }
@@ -164,6 +166,17 @@ public class HotelServiceImpl implements HotelService {
 
         return hotelVO;
     }
+    //检查retrieveHotelDetails集成测试的桩程序
+    public HotelVO retrieveHotelDetails_sub(Integer hotelId) {
+        HotelVO hotelVO=new HotelVO();
+        hotelVO.setAddress("111");
+        hotelVO.setBizRegion("xidan");
+        hotelVO.setDescription("shanghai");
+        hotelVO.setId(1);
+        return hotelVO;
+    }
+
+
     public boolean deleteHotel(Integer hotelId){
 
         hotelMapper.deleteHotel( hotelId);
@@ -221,6 +234,9 @@ public class HotelServiceImpl implements HotelService {
 
 
     }
+
+    //通过前端传来的地址，名字，以及价格，星级区间对所有的酒店进行搜索
+    //下面三个方法均用来实现搜索逻辑
 
     public  boolean getResult(String targetStr, String str) {
         if (targetStr.contains(str)) {
