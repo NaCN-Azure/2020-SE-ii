@@ -124,16 +124,6 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void updateRoomInfo(Integer hotelId, String roomType, Integer rooms) {
-        roomService.updateRoomInfo(hotelId,roomType,rooms);
-    }
-
-    @Override
-    public int getRoomCurNum(Integer hotelId, String roomType) {
-        return roomService.getRoomCurNum(hotelId,roomType);
-    }
-
-    @Override
     public List<HotelVO> retrieveHotels() {
 
         return hotelMapper.selectAllHotel();

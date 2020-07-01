@@ -25,6 +25,7 @@ public class OrderController {
 
     @PostMapping("/addOrder")
     public ResponseVO reserveHotel(@RequestBody OrderVO orderVO){
+        System.out.println(orderVO.getCheckInDate());
         return orderService.addOrder(orderVO);
     }
 

@@ -25,14 +25,6 @@ public interface HotelService {
 
 
     /**
-     * 预订酒店修改剩余客房信息
-     * @param hotelId
-     * @param roomType
-     * @param rooms
-     */
-    void updateRoomInfo(Integer hotelId, String roomType,Integer rooms);
-
-    /**
      * 列表获取酒店信息
      * @return
      */
@@ -51,13 +43,6 @@ public interface HotelService {
     HotelVO retrieveHotelDetails(Integer hotelId);
 
     boolean deleteHotel(Integer hotelId);
-    /**
-     * 查看酒店剩余某种房间数量
-     * @param hotelId
-     * @param roomType
-     * @return
-     */
-    int getRoomCurNum(Integer hotelId,String roomType);
 
     /**
      * 查看酒店的所有订单

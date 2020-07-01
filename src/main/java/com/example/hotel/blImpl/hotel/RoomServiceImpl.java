@@ -1,13 +1,21 @@
 package com.example.hotel.blImpl.hotel;
 
 import com.example.hotel.bl.hotel.RoomService;
+import com.example.hotel.bl.order.OrderService;
+import com.example.hotel.blImpl.order.OrderServiceImpl;
+import com.example.hotel.data.hotel.RoomDetailMapper;
 import com.example.hotel.data.hotel.RoomMapper;
 import com.example.hotel.po.HotelRoom;
 import com.example.hotel.enums.Breakfast;
 import com.example.hotel.enums.RoomType;
+import com.example.hotel.po.HotelRoomDetail;
+import com.example.hotel.po.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.*;
+import com.example.hotel.vo.OrderVO;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -15,6 +23,19 @@ public class RoomServiceImpl implements RoomService {
 
     @Autowired
     private RoomMapper roomMapper;
+
+    @Autowired
+    private RoomDetailMapper roomDetailMapper;
+
+    private boolean timeMatch(String start_time,String end_time,String checkin_time,String checkout_time){
+        LocalDateTime a,b,c,d;String x=" 00:00:00";
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        a=LocalDateTime.parse(start_time+x,df);
+        b=LocalDateTime.parse(end_time+x,df);
+        c=LocalDateTime.parse(checkin_time+x,df);
+        d=LocalDateTime.parse(checkout_time+x,df);
+        return (c.isAfter(a)&&a.isBefore(b))||(d.isAfter(a)&&b.isBefore(b));
+    }
 
     @Override
     public List<HotelRoom> retrieveHotelRoomInfo(Integer hotelId) {
@@ -46,16 +67,32 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void updateRoomInfo(Integer hotelId, String roomType, Integer rooms) {
-        roomMapper.updateRoomInfo(hotelId,roomType,rooms);
+    public List<HotelRoom> getHotelAllRooms(Integer hotelId){
+        //return roomMapper.selectRoomsByHotelId(hotelId);
+        return getHotelAllRoomsInDate(hotelId,"2000-01-01","2030-01-01");
     }
 
     @Override
-    public int getRoomCurNum(Integer hotelId, String roomType) {
-        return roomMapper.getRoomCurNum(hotelId,roomType);
+    public  List<HotelRoom> getHotelAllRoomsInDate(Integer hotelId,String start_time,String end_time){
+        List<HotelRoom> rooms=roomMapper.selectRoomsByHotelId(hotelId);
+        for(int i=0;i<rooms.size();i++){
+            HotelRoom temp=rooms.get(i);
+            rooms.get(i).setCurNum(getRoomCurNum(temp.getId(),start_time,end_time));
+        }
+        return rooms;
     }
 
     @Override
-    public List<HotelRoom> getHotelAllRooms(Integer hotelId){return roomMapper.selectRoomsByHotelId(hotelId);}
-
+    public int getRoomCurNum(Integer roomId,String start_time,String end_time){
+        List<HotelRoomDetail> detailrooms = roomDetailMapper.getAllDetailRooms(roomId);
+        System.out.println("test: ");
+        int total=roomMapper.selectRoomById(roomId).getTotal();
+        for(int i=0;i<detailrooms.size();i++){
+            HotelRoomDetail tempDetail=detailrooms.get(i);
+            if(timeMatch(start_time,end_time,tempDetail.getStart_time(),tempDetail.getEnd_time())){
+                total--;
+            }
+        }
+        return total;
+    }
 }

@@ -1,13 +1,18 @@
 package com.example.hotel.blImpl.order;
 
 import com.example.hotel.bl.hotel.HotelService;
+import com.example.hotel.bl.hotel.RoomService;
 import com.example.hotel.bl.order.OrderService;
 import com.example.hotel.bl.user.AccountService;
 import com.example.hotel.data.hotel.CommentMapper;
+import com.example.hotel.data.hotel.RoomDetailMapper;
+import com.example.hotel.data.hotel.RoomMapper;
 import com.example.hotel.data.order.OrderMapper;
 import com.example.hotel.data.user.AccountMapper;
 import com.example.hotel.enums.OrderStates;
+import com.example.hotel.enums.RoomType;
 import com.example.hotel.po.HistoryComment;
+import com.example.hotel.po.HotelRoomDetail;
 import com.example.hotel.po.Order;
 import com.example.hotel.po.User;
 import com.example.hotel.vo.HistoryCommentVO;
@@ -39,16 +44,27 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     HotelService hotelService;
     @Autowired
+    RoomService roomService;
+    @Autowired
     AccountService accountService;
     @Autowired
     CommentMapper commentMapper;
     @Autowired
     AccountMapper accountMapper;
+    @Autowired
+    RoomDetailMapper roomDetailMapper;
+    @Autowired
+    RoomMapper roomMapper;
 
     @Override
     public ResponseVO addOrder(OrderVO orderVO) {
         int reserveRoomNum = orderVO.getRoomNum();
-        int curNum = hotelService.getRoomCurNum(orderVO.getHotelId(),orderVO.getRoomType());
+        System.out.println("reserveRoomNum :"+reserveRoomNum);
+        int roomId=roomMapper.findIdByThree(orderVO.getHotelId(),orderVO.getRoomType()).getId();
+        System.out.println("roomType: "+orderVO.getRoomType());
+        System.out.println("roomId: "+roomId);
+        orderVO.setRoomId(roomId);///这一套日后删掉
+        int curNum = roomService.getRoomCurNum(orderVO.getRoomId(),orderVO.getCheckInDate(),orderVO.getCheckOutDate());
         if(reserveRoomNum>curNum){
             return ResponseVO.buildFailure(ROOMNUM_LACK);
         }
@@ -67,8 +83,16 @@ public class OrderServiceImpl implements OrderService {
             Order order = new Order();
             BeanUtils.copyProperties(orderVO,order);
             orderMapper.addOrder(order);
-            hotelService.updateRoomInfo(orderVO.getHotelId(),orderVO.getRoomType(),orderVO.getRoomNum());
             accountMapper.plusCredit(user.getId(),2.0);
+            for(int i=0;i<reserveRoomNum;i++) {
+                HotelRoomDetail hotelRoomDetail = new HotelRoomDetail();
+                hotelRoomDetail.setCan_use(0);
+                hotelRoomDetail.setStart_time(order.getCheckInDate());
+                hotelRoomDetail.setEnd_time(order.getCheckOutDate());
+                hotelRoomDetail.setOrder_id(order.getId());
+                hotelRoomDetail.setRoom_id(order.getRoomId());
+                roomDetailMapper.insertDetailRoom(hotelRoomDetail);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseVO.buildFailure(RESERVE_ERROR);
@@ -105,6 +129,7 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         orderMapper.annulOrder(orderid);
+        roomDetailMapper.deleteDetailRoom(checkOrder.getId());
         return ResponseVO.buildSuccess(true);
     }
 

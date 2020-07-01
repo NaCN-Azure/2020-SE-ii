@@ -202,6 +202,7 @@ CREATE TABLE `OrderList` (
                              `clientName` varchar(255) DEFAULT NULL,
                              `phoneNumber` varchar(255) DEFAULT NULL,
                              `orderState` varchar(255) DEFAULT NULL,
+                             `roomId` int(11) DEFAULT NULL,
                              PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -223,7 +224,6 @@ DROP TABLE IF EXISTS `Room`;
 CREATE TABLE `Room` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `price` double DEFAULT NULL,
-                        `curNum` int(11) DEFAULT NULL,
                         `total` int(11) DEFAULT NULL,
                         `hotel_id` int(11) DEFAULT NULL,
                         `peopleNum` int(11) DEFAULT NULL,
@@ -239,9 +239,29 @@ CREATE TABLE `Room` (
 
 BEGIN;
 /*!40000 ALTER TABLE `Room` DISABLE KEYS */;
-INSERT INTO `Room` VALUES (2,199,20,20,1,2,'BigBed','yes'),(3,299,30,30,1,2,'DoubleBed','yes'),(4,399,10,10,1,2,'Family','yes'),(6,399,10,10,2,2,'Family','yes'),(7,149,10,10,3,3,'Family','no');
+INSERT INTO `Room` VALUES (2,199,20,1,2,'BigBed','yes'),(3,299,30,1,2,'DoubleBed','yes'),(4,399,10,1,2,'Family','yes'),(6,399,10,2,2,'Family','yes'),(7,149,10,3,3,'Family','no');
 /*!40000 ALTER TABLE `Room` ENABLE KEYS */;
 COMMIT;
+
+DROP TABLE IF EXISTS `RoomDetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RoomDetail` (
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `room_id` int(11) DEFAULT NULL,
+                        `can_use` int(11) DEFAULT 1,
+                        `start_time` varchar(100) DEFAULT NULL,
+                        `end_time` varchar(100) DEFAULT NULL,
+                        `order_id` int(11) DEFAULT -1,
+                        PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Room`
+--
+/*!40000 ALTER TABLE `RoomDetail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RoomDetail` ENABLE KEYS */;
 
 --
 -- Table structure for table `Comment`
@@ -311,7 +331,7 @@ CREATE TABLE `User` (
 
 BEGIN;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (4,'black@qq.com','123456','测试一号','12345678919',-5,'Client',-1,'2000-08-09','',''),(5,'123@qq.com','123456','测试二号','12345678911',100,'Client',-1,'1999-02-25','',''),(6,'333@qq.com','123456',NULL,NULL,NULL,'HotelManager',1,'1990-01-04','',''),(7,'111@qq.com','123456',NULL,NULL,NULL,'Admin',-1,'1980-02-06','',''),(8,'234@qq.com','123456',NULL,NULL,NULL,'Saler',-1,'1980-02-06','',''),(9,'222@qq.com','123456',NULL,NULL,NULL,'HotelManager',2,'1990-01-04','','');
+INSERT INTO `User` VALUES (4,'black@qq.com','123456','测试一号','12345678919',-5,'Client',-1,'2000-08-09','',''),(5,'123@qq.com','123456','测试二号','12345678911',100,'Client',-1,'1999-02-25','',''),(6,'333@qq.com','123456','汉庭经理',NULL,NULL,'HotelManager',1,'1990-01-04','',''),(7,'111@qq.com','123456','管理者',NULL,NULL,'Admin',-1,'1980-02-06','',''),(8,'234@qq.com','123456','营销人员',NULL,NULL,'Saler',-1,'1980-02-06','',''),(9,'222@qq.com','123456','儒家经理',NULL,NULL,'HotelManager',2,'1990-01-04','','');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 COMMIT;
 

@@ -23,21 +23,9 @@ public interface RoomService {
 
     int deleteRoom(Integer id);
 
-    /**
-     * 预订酒店后更新客房房间数量
-     * @param hotelId
-     * @param roomType
-     * @param rooms
-     */
-    void updateRoomInfo(Integer hotelId, String roomType, Integer rooms);
-
-    /**
-     * 获取酒店指定房间剩余数量
-     * @param hotelId
-     * @param roomType
-     * @return
-     */
-    int getRoomCurNum(Integer hotelId, String roomType);
+    int getRoomCurNum(Integer roomId,String start_time,String end_time);
 
     List<HotelRoom> getHotelAllRooms(Integer hotelId);
+
+    List<HotelRoom> getHotelAllRoomsInDate(Integer hotelId,String start_time,String end_time);
 }

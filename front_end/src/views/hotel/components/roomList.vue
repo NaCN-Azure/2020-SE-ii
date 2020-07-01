@@ -14,7 +14,7 @@
                 :dataSource="data"
         >
                 <template
-                        v-for="col in ['roomType', 'breakfast', 'peopleNum','price']"
+                        v-for="col in ['roomType', 'breakfast', 'curNum','peopleNum','price']"
                         :slot="col"
                         slot-scope="text, record"
                 >
@@ -94,6 +94,11 @@ const columns = [
       key: 'breakfast',
     },
     {
+      title:'剩余房间',
+      dataIndex: 'curNum',
+      key:'curNum',
+    },
+    {
       title: '入住人数',
       key: 'peopleNum',
       dataIndex: 'peopleNum',
@@ -154,6 +159,7 @@ export default {
                 hotelId:this.roomList[i].hotelId,
                 roomType: this.roomList[i].roomType,
                 breakfast: this.roomList[i].breakfast,
+                curNum:this.roomList[i].curNum,
                 peopleNum: this.roomList[i].peopleNum,
                 price: this.roomList[i].price,
             });
@@ -162,6 +168,7 @@ export default {
                 key: i.toString(),
                 roomType: this.roomList[i].roomType,
                 breakfast: this.roomList[i].breakfast,
+                curNum:this.roomList[i].curNum,
                 peopleNum: this.roomList[i].peopleNum,
                 price: this.roomList[i].price,
             });
