@@ -8,7 +8,9 @@ import {
     searchHotelAPI,
     getHotelUrlsAPI,
     getHotelUrlByIdAPI,
-    updateHotelUrlAPI
+    updateHotelUrlAPI,
+    searchMultipleHotelAPI,
+    searchRoomlByDateAPI,
 } from '@/api/hotel'
 import {
     addRoomAPI,
@@ -54,8 +56,12 @@ const hotel = {
             breakfast: '',
         },
         addRoomModalVisible: false,
+        roomDate:{}
     },
     mutations: {
+        set_roomDate:function(state, data) {
+            state.roomDate = data
+        },
         set_hotelList: function(state, data) {
             state.hotelList = data
         },
@@ -148,6 +154,19 @@ const hotel = {
             }
         },
 
+        searchRoomlByDate:async({commit, state},dates) => {
+
+            commit('set_roomDate',dates)
+            const res = await searchRoomlByDateAPI({
+               ...dates,
+                hotelId: state.currentHotelId
+            })
+            console.log('res',res)
+            if(res){
+                commit('set_roomList', res)
+            }
+
+        },
         getHotelRoom: async({ state, commit },hotelid) => {
             console.log(hotelid)
             const res = await hotelAllRoomsAPI(hotelid)
@@ -192,12 +211,12 @@ const hotel = {
                 dispatch('getHotelById')
             }
         },
-        addOrder: async({ state, commit }, data) => {
+        addOrder: async({ state, commit,dispatch }, data) => {
             const res = await reserveHotelAPI(data)
             console.log(res)
             if(res){
                 message.success('预定成功')
-                window.location.reload()
+                dispatch('searchRoomlByDate',state.roomDate)
                 commit('set_orderModalVisible', false)
             }
         },
@@ -205,6 +224,15 @@ const hotel = {
             const res = await orderMatchCouponsAPI(data)
             if(res){
                 commit('set_orderMatchCouponList', res)
+            }
+        },
+
+        getHotelMatch: async({ state, commit }, data) => {
+            
+            const res = await searchMultipleHotelAPI(data)
+            console.log(res)
+            if(res){
+                commit('set_hotelList', res)
             }
         },
         addRoom: async({ state, dispatch, commit }) => {

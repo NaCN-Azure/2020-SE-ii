@@ -61,10 +61,7 @@
                     :dataSource="managerList"
                     bordered
             >
-<!--                    <span slot="credit" slot-scope="record">-->
-<!--                        <span>￥{{ record }}</span>-->
 
-<!--                    </span>-->
                 <span slot="action" slot-scope="record">
                         <a-button type="primary" size="small" @click="changeUser('HotelManager',record)">修改用户信息</a-button>
                         <a-divider type="vertical"></a-divider>

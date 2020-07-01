@@ -4,6 +4,7 @@ import com.example.hotel.bl.hotel.HotelService;
 import com.example.hotel.bl.hotel.RoomService;
 import com.example.hotel.po.HistoryComment;
 import com.example.hotel.po.HotelRoom;
+import com.example.hotel.po.HotelSearch;
 import com.example.hotel.util.ServiceException;
 import com.example.hotel.vo.HotelPicVO;
 import com.example.hotel.vo.HotelVO;
@@ -95,7 +96,20 @@ public class HotelController {
     public ResponseVO searchHotel(@RequestParam String key){
         return ResponseVO.buildSuccess(hotelService.searchHotel(key));
     }
+    @PostMapping("/searchMultipleHotel")
+    public ResponseVO searchMultipleHotel(@RequestBody HotelSearch hotelSearch){
+        return ResponseVO.buildSuccess(hotelService.searchHotelbysection(
+                hotelSearch.getAddress(),
+                hotelSearch.getHotelStar(),
+                hotelSearch.getMoney(),
+                hotelSearch.getName(),
+                hotelSearch.getRate()
+                ));
+    }
 
-
+    @GetMapping("/searchRoomlByDate")
+    public ResponseVO searchRoomlByDate(@RequestParam int hotelId,@RequestParam String start,@RequestParam String end){
+        return ResponseVO.buildSuccess(roomService.getHotelAllRoomsInDate(hotelId,start,end));
+    }
 
 }

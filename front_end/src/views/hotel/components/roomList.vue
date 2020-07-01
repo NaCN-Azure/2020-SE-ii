@@ -198,6 +198,7 @@ export default {
             'getHotelRoom',
         ]),
         order(record) {
+
             this.set_currentOrderRoom(record)
             this.set_orderModalVisible(true)
         },

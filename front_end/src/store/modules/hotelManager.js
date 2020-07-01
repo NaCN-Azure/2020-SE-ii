@@ -27,7 +27,7 @@ const hotelManager = {
             address: '',
             bizRegion:'XiDan',
             hotelStar:'',
-            rate: 0,
+            rate: 5,
             description:'',
             phoneNum:'',
             managerId:'',

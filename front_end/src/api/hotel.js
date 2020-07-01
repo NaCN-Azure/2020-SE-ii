@@ -56,11 +56,26 @@ export function updateHotelInfoAPI(data) {
         data
     })
 }
+export function searchRoomlByDateAPI(data) {
+    return axios({
+        url: `${api.hotelPre}/searchRoomlByDate?hotelId=${data.hotelId}&start=${data.start}&end=${data.end}`,
+        method: 'GET',
+    })
+}
 export function searchHotelAPI(data) {
-    console.log(data,'data')
+
     return axios({
         url: `${api.hotelPre}/searchHotel?key=${data}`,
         method: 'GET',
+    })
+}
+export function searchMultipleHotelAPI(data) {
+    console.log('data',data)
+
+    return axios({
+        url:`${api.hotelPre}/searchMultipleHotel`,
+        method: 'POST',
+        data
     })
 }
 

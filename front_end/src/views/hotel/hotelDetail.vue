@@ -89,8 +89,19 @@
                 <a-divider></a-divider>
                 <a-tabs>
                     <a-tab-pane tab="房间信息" key="1">
+                        <div style="width: 100%; text-align: right; margin:20px 0"><a-range-picker @change="onChange" /></div>
+                        <a-table
+                                v-if="userInfo.userType=='Client'"
+                                :columns="columns"
+                                :dataSource="roomList"
+                                bordered
+                        >
 
-                        <RoomList :rooms="currentHotelInfo.rooms"></RoomList>
+                        <span slot="action" slot-scope="record">
+                            <a-button type="primary" @click="order(record)">预定</a-button>
+                        </span>
+                        </a-table>
+                        <RoomList :rooms="currentHotelInfo.rooms" v-if="userInfo.userType=='HotelManager'"></RoomList>
                     </a-tab-pane>
                     <a-tab-pane tab="酒店详情" key="2">
 
@@ -98,14 +109,15 @@
                     <a-tab-pane tab="历史评价" key="3">
                         <HistoryComment :comments="currentHotelInfo.historyCommentVOs"></HistoryComment>
 
-
                     </a-tab-pane>
                 </a-tabs>
             </div>
+            <order-modal></order-modal>
         </a-layout-content>
     </a-layout>
 </template>
 <script>
+    import OrderModal from "./components/orderModal";
     let OSS = require('ali-oss');
     // let client=new OSS({
     //     accessKeyId:'LTAI4G5y6f1Hk4R5wVsPbQZ4',
@@ -140,6 +152,44 @@
                 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
         }
     ];
+     const columns = [
+        {
+            title: '房型',
+            dataIndex: 'roomType',
+            key: 'roomType',
+        },
+        {
+            title: '早餐',
+            dataIndex: 'breakfast',
+            key: 'breakfast',
+        },
+        {
+            title:'可用房间',
+            dataIndex: 'total',
+            key:'total',
+        },
+        {
+            title:'剩余房间',
+            dataIndex: 'curNum',
+            key:'curNum',
+        },
+        {
+            title: '入住人数',
+            key: 'peopleNum',
+            dataIndex: 'peopleNum',
+        },
+        {
+            title: '房价',
+            key: 'price',
+            dataIndex: 'price',
+            scopedSlots: { customRender: 'price'}
+        },
+        {
+            title: '操作',
+            key: 'action',
+            scopedSlots: { customRender: 'action' },
+        },
+    ];
 
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 import RoomList from './components/roomList'
@@ -147,11 +197,13 @@ import RoomList from './components/roomList'
 export default {
     name: 'hotelDetail',
     components: {
+        OrderModal,
         HistoryComment,
         RoomList
     },
     data() {
         return {
+            columns,
             temp:[],
             listData,
             modify: false,
@@ -165,7 +217,8 @@ export default {
             'currentHotelInfo',
             'userInfo',
             'currentHotelId',
-            'currentHotelUrl'
+            'currentHotelUrl',
+            'roomList'
         ]),
         image_url:function () {
             // return "https://test-nju-1.oss-cn-shenzhen.aliyuncs.com/hotel/timg.png"
@@ -192,14 +245,29 @@ export default {
     methods: {
         ...mapMutations([
             'set_currentHotelId',
+            'set_currentOrderRoom',
+            'set_orderModalVisible'
         ]),
         ...mapActions([
             'getHotelById',
             'updateHotelInfo',
             'getHotelUrlById',
-            'updateUrl'
+            'updateUrl',
+            'searchRoomlByDate',
 
         ]),
+        order(record) {
+           this.set_currentOrderRoom(record)
+            this.set_orderModalVisible(true)
+        },
+        onChange(date, dateString) {
+            console.log(date, dateString);
+            this.searchRoomlByDate({
+                start:dateString[0],
+                end:dateString[1]
+            })
+            console.log(this.roomList)
+        },
         saveModify() {
             this.form.validateFields((err, values) => {
                 if (!err) {

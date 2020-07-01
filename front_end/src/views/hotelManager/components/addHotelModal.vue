@@ -109,6 +109,7 @@
                             description: this.form.getFieldValue('description'),
                             address: this.form.getFieldValue('address'),
                             phoneNum: this.form.getFieldValue('phoneNumber'),
+                            rate:4.5,
                             hotelStar: this.hotelStarNum,
                             managerId: Number(this.userId)
                         }
