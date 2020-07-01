@@ -239,7 +239,7 @@ CREATE TABLE `Room` (
 
 BEGIN;
 /*!40000 ALTER TABLE `Room` DISABLE KEYS */;
-INSERT INTO `Room` VALUES (2,199,20,1,2,'BigBed','yes'),(3,299,30,1,2,'DoubleBed','yes'),(4,399,10,1,2,'Family','yes'),(6,399,10,2,2,'Family','yes'),(7,149,10,3,3,'Family','no');
+INSERT INTO `Room` VALUES (2,199,20,1,2,'BigBed','yes'),(3,299,30,1,2,'DoubleBed','yes'),(4,399,10,1,2,'Family','yes'),(6,399,10,2,2,'Family','yes'),(7,149,1,3,3,'Family','no');
 /*!40000 ALTER TABLE `Room` ENABLE KEYS */;
 COMMIT;
 

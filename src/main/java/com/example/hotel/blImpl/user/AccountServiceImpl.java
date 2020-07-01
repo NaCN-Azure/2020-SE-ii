@@ -2,6 +2,7 @@ package com.example.hotel.blImpl.user;
 
 import com.example.hotel.bl.user.AccountService;
 import com.example.hotel.data.user.AccountMapper;
+import com.example.hotel.enums.UserType;
 import com.example.hotel.po.User;
 import com.example.hotel.vo.UserForm;
 import com.example.hotel.vo.ResponseVO;
@@ -24,6 +25,8 @@ public class AccountServiceImpl implements AccountService {
         BeanUtils.copyProperties(userVO,user);
         try {
             user.setHotelid(-1);
+            user.setUserName(userVO.getUserName());
+            user.setUserType(UserType.Client);
             accountMapper.createNewAccount(user);
         } catch (Exception e) {
             System.out.println(e.getMessage());

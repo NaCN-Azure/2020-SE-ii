@@ -34,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
         b=LocalDateTime.parse(end_time+x,df);
         c=LocalDateTime.parse(checkin_time+x,df);
         d=LocalDateTime.parse(checkout_time+x,df);
-        return (c.isAfter(a)&&a.isBefore(b))||(d.isAfter(a)&&b.isBefore(b));
+        return (c.isAfter(a)&&c.isBefore(b))||(d.isAfter(a)&&d.isBefore(b));//判断前两者是否与后两者有交集
     }
 
     @Override
@@ -79,6 +79,7 @@ public class RoomServiceImpl implements RoomService {
         for(int i=0;i<rooms.size();i++){
             HotelRoom temp=rooms.get(i);
             rooms.get(i).setCurNum(getRoomCurNum(temp.getId(),start_time,end_time));
+
         }
         return rooms;
     }
@@ -88,14 +89,20 @@ public class RoomServiceImpl implements RoomService {
         List<HotelRoomDetail> detailrooms = roomDetailMapper.getAllDetailRooms(roomId);
         System.out.println("test: ");
         int total=roomMapper.selectRoomById(roomId).getTotal();
+        int result=total;
         for(int i=0;i<detailrooms.size();i++){
             HotelRoomDetail tempDetail=detailrooms.get(i);
             if(timeMatch(start_time,end_time,tempDetail.getStart_time(),tempDetail.getEnd_time())){
-                total--;
+                System.out.println(start_time+" "+end_time);
+                System.out.println(tempDetail.getStart_time()+" "+tempDetail.getEnd_time());
+                result--;
             }
         }
-        return total;
-    }
+        System.out.println("总共："+total);
+        System.out.println("还剩：" +result);
+        if(result<0){result=0;}
+        return result;
+    }//动态房间数目的核心方法，用检索roomdetaiilmapper的方式找出可用房间数目
 
     //获得动态房间数目的桩程序
 

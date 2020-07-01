@@ -197,6 +197,7 @@ const hotel = {
             console.log(res)
             if(res){
                 message.success('预定成功')
+                window.location.reload()
                 commit('set_orderModalVisible', false)
             }
         },
