@@ -7,6 +7,7 @@ import com.example.hotel.bl.user.AccountService;
 import com.example.hotel.data.Pic.PicMapper;
 import com.example.hotel.data.hotel.CommentMapper;
 import com.example.hotel.data.hotel.HotelMapper;
+import com.example.hotel.data.hotel.RoomMapper;
 import com.example.hotel.enums.BizRegion;
 import com.example.hotel.enums.UserType;
 import com.example.hotel.po.*;
@@ -23,6 +24,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class HotelServiceImpl implements HotelService {
+
+    @Autowired
+    private RoomMapper roomMapper;
+
 
     @Autowired
     private PicMapper picMapper;
@@ -202,6 +207,64 @@ public class HotelServiceImpl implements HotelService {
 
         picMapper.insertPic(hotelPic);
     }
+
+    @Override
+    public List<HotelVO> searchHotelbysection(String address,int[] hotelStar,int[] money,String name,int[] rate )
+    {
+        List<HotelVO> allHotels=retrieveHotels();
+        List<HotelVO> res=new ArrayList<HotelVO>();
+        for(int i=0;i<allHotels.size();i++)
+        {
+            if(getResult(allHotels.get(i).getAddress(),address)
+               && getResult(allHotels.get(i).getName(),name)
+               && allHotels.get(i).getHotelStar()>=hotelStar[0] && allHotels.get(i).getHotelStar()<=hotelStar[1]
+               && findmin(allHotels.get(i).getId())>=money[0] && findmax(allHotels.get(i).getId())<=money[1]
+               && allHotels.get(i).getRate()>=rate[0] && allHotels.get(i).getRate()<=rate[1])
+            {
+                res.add(allHotels.get(i));
+            }
+
+        }
+
+        return res;
+
+
+
+    }
+
+    public  boolean getResult(String targetStr, String str) {
+        if (targetStr.contains(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public double findmin(int hotelid)
+    {
+        List<HotelRoom> temp=roomMapper.selectRoomsByHotelId(hotelid);
+        List<Double>  store_price=new ArrayList<Double>();
+        for(int i=0;i<temp.size();i++)
+        {
+            store_price.add(temp.get(i).getPrice());
+        }
+        Collections.sort(store_price);
+        return store_price.get(0);
+    }
+
+    public double findmax(int hotelid)
+    {
+        List<HotelRoom> temp=roomMapper.selectRoomsByHotelId(hotelid);
+        List<Double>  store_price=new ArrayList<Double>();
+        for(int i=0;i<temp.size();i++)
+        {
+            store_price.add(temp.get(i).getPrice());
+        }
+        Collections.sort(store_price);
+        return store_price.get(store_price.size()-1);
+    }
+
+
 
 
 }

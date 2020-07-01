@@ -68,6 +68,9 @@ public interface HotelService {
 
     List<HotelVO> searchHotel(String key);
 
+
+    List<HotelVO> searchHotelbysection(String address,int[] hotelStar,int[] money,String name,int[] rate );
+
     void updatePic(Integer id, String url);
 
     void insertPic(HotelPic hotelPic);
