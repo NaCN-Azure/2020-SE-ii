@@ -35,7 +35,7 @@ public class TimeCouponVO extends CouponVO {
         this.discount = discount;
     }
 
-    public Integer getTargetMoney() {
+    public double getTargetMoney() {
         return targetMoney;
     }
 

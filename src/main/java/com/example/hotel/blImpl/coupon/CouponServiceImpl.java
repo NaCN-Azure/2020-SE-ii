@@ -23,13 +23,9 @@ import java.util.List;
 @Service
 public class CouponServiceImpl implements CouponService {
 
-
     private final  TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy;
-
     private final  TimeCouponStrategyImpl timeCouponStrategy;
-
-
-
+    private final  TargetRoomNumberCouponStrategylmpl targetRoomNumberCouponStrategy;
     private final CouponMapper couponMapper;
 
     private static List<CouponMatchStrategy> strategyList = new ArrayList<>();
@@ -38,13 +34,15 @@ public class CouponServiceImpl implements CouponService {
 
     @Autowired
     public CouponServiceImpl(TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy,
-                             TimeCouponStrategyImpl timeCouponStrategy,
+                             TimeCouponStrategyImpl timeCouponStrategy,TargetRoomNumberCouponStrategylmpl targetRoomNumberCouponStrategy,
                              CouponMapper couponMapper) {
         this.couponMapper = couponMapper;
         this.targetMoneyCouponStrategy = targetMoneyCouponStrategy;
+        this.targetRoomNumberCouponStrategy=targetRoomNumberCouponStrategy;
         this.timeCouponStrategy = timeCouponStrategy;
         strategyList.add(targetMoneyCouponStrategy);
         strategyList.add(timeCouponStrategy);
+        strategyList.add(targetRoomNumberCouponStrategy);
     }
 
 
@@ -79,9 +77,9 @@ public class CouponServiceImpl implements CouponService {
     public CouponVO addHotelTargetMoneyCoupon(HotelTargetMoneyCouponVO couponVO) {
         //首先把VO对象转换成插入到数据库中的PO对象
         Coupon coupon = new Coupon();
-        coupon.setCouponName(couponVO.getName());
+        coupon.setCouponName(couponVO.getCouponName());
         coupon.setDescription(couponVO.getDescription());
-        coupon.setCouponType(couponVO.getType());
+        coupon.setCouponType(couponVO.getCouponType());
         coupon.setTargetMoney(couponVO.getTargetMoney());
         coupon.setHotelId(couponVO.getHotelId());
         coupon.setDiscountMoney(couponVO.getDiscountMoney());
@@ -96,21 +94,10 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public void updateCouponInfo(CouponVO couponVO){
         System.out.println("114514 1919810");//判断前后端接口是否顺利接上的测试代码
+        System.out.println(couponVO.getId());
 
-        System.out.println(couponVO.getEndTime());
-
-        int id=couponVO.getId();
-        String description=couponVO.getDescription();
-        String couponName=couponVO.getName();
-
-
-        String start_time=couponVO.getStartTime();
-        String end_time=couponVO.getEndTime();
-
-
-
-        couponMapper.updateCoupon(id,description,"满减优惠",3,
-                1,start_time,end_time);
+        couponMapper.updateCoupon(couponVO.getId(),couponVO.getDescription(),couponVO.getCouponName(),couponVO.getCouponType(),
+                couponVO.getStatus(),couponVO.getStartTime(),couponVO.getEndTime());
     }
 
     @Override
@@ -145,15 +132,9 @@ public class CouponServiceImpl implements CouponService {
                     hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
                     availAbleCoupons.add(hotelCoupons.get(i));
                 }
-            }}
+            }
+        }
         return availAbleCoupons;
-
-
-
-
-
-
-
 
     }
 

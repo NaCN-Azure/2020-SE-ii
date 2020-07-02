@@ -31,10 +31,11 @@ export function getUserOrdersAPI(data) {
     })
 }
 export function getHistoryOrdersAPI(params) {
+    console.log(params)
     return axios({
-        url: `${api.orderPre}/getUserOrders`,
+        url: `${api.orderPre}/getHistoryOrders`,
         method: 'GET',
-        params,
+        params
     })
 }
 export function getHotelOrdersAPI(data) {

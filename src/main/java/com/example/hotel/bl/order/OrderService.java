@@ -73,4 +73,6 @@ public interface OrderService {
 
     ResponseVO addComment(HistoryCommentVO historyCommentVO);
 
+    List<Order> getHistoryOrders(Integer userid,Integer hotelId);
+
 }

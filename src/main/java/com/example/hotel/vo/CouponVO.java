@@ -3,16 +3,57 @@ package com.example.hotel.vo;
 import java.time.LocalDateTime;
 
 public class CouponVO {
-    private Integer id;
+    /**
+     * 优惠券id
+     */
+    private int id;
+    /**
+     * 优惠券描述
+     */
     private String description;
-    private Integer status;
-    private String name;
-    private Integer type;
+
+    /**
+     * 如果为-1 代表是网站推出的优惠
+     */
+    private Integer hotelId;
+
+    /**
+     * 优惠券类型 1生日特惠 2多间特惠 3满减优惠 4限时优惠
+     */
+    private Integer couponType;
+    /**
+     * 优惠券名称
+     */
+    private String couponName;
+    /**
+     * 优惠券使用门槛
+     */
+    private double targetMoney;
+
+    /**
+     * 折扣
+     */
+    private double discount;
+    /**
+     * 优惠券优惠金额
+     */
+    private double discountMoney;
+    /**
+     * 可用时间
+     */
     private String startTime;
+    /**
+     * 失效时间
+     */
     private String endTime;
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    /**
+     * 优惠券状态 是否已经失效 1可用 0失效
+     */
+    private Integer status;
+
+    public String getStartTime() {
+        return startTime;
     }
 
     public void setStartTime(String startTime) {
@@ -23,15 +64,15 @@ public class CouponVO {
         return endTime;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -43,6 +84,46 @@ public class CouponVO {
         this.description = description;
     }
 
+    public String getCouponName() {
+        return couponName;
+    }
+
+    public void setCouponName(String couponName) {
+        this.couponName = couponName;
+    }
+
+    public double getTargetMoney() {
+        return targetMoney;
+    }
+
+    public void setTargetMoney(double targetMoney) {
+        this.targetMoney = targetMoney;
+    }
+
+    public double getDiscountMoney() {
+        return discountMoney;
+    }
+
+    public void setDiscountMoney(double discountMoney) {
+        this.discountMoney = discountMoney;
+    }
+
+    public Integer getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public Integer getCouponType() {
+        return couponType;
+    }
+
+    public void setCouponType(Integer couponType) {
+        this.couponType = couponType;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -51,19 +132,14 @@ public class CouponVO {
         this.status = status;
     }
 
-    public String getName() {
-        return name;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
+    public CouponVO() {
     }
 }

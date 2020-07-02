@@ -14,9 +14,10 @@
                         'coupontype',
                         {rules:[{required:true,message: '请选择优惠券类型'}]}
                     ]">
-                    <a-select-option value=1>测试满减</a-select-option>
-                    <a-select-option value=2>测试满减1</a-select-option>
-                    <a-select-option value=3>测试满减3</a-select-option>
+                    <a-select-option value=1>生日策略</a-select-option>
+                    <a-select-option value=2>多间策略</a-select-option>
+                    <a-select-option value=3>满减策略</a-select-option>
+                    <a-select-option value=4>限时策略</a-select-option>
                 </a-select>
             </a-form-item>
             <a-form-item label="券名" v-bind="formItemLayout">

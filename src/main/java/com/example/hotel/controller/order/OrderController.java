@@ -42,11 +42,10 @@ public class OrderController {
     public  ResponseVO retrieveUserOrders(@PathVariable int userid){
         return ResponseVO.buildSuccess(orderService.getUserOrders(userid));
     }
-    @GetMapping("getHistoryOrders")
+    @GetMapping("/getHistoryOrders")
     public  ResponseVO retrieveHistoryOrders(@RequestParam Integer userId,
                                           @RequestParam Integer hotelId){
-        //return ResponseVO.buildSuccess(orderService.getHistoryOrders(userid,hotelId));
-        return ResponseVO.buildSuccess(true);//blimpl完成后删除
+                return ResponseVO.buildSuccess(orderService.getHistoryOrders(userId,hotelId));
     }
     @GetMapping("/{orderid}/annulOrder")
     public ResponseVO annulOrder(@PathVariable int orderid){

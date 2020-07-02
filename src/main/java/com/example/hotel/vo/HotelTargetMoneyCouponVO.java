@@ -19,7 +19,7 @@ public class HotelTargetMoneyCouponVO extends CouponVO {
         this.hotelId = hotelId;
     }
 
-    public Integer getTargetMoney() {
+    public double getTargetMoney() {
         return targetMoney;
     }
 
@@ -27,7 +27,7 @@ public class HotelTargetMoneyCouponVO extends CouponVO {
         this.targetMoney = targetMoney;
     }
 
-    public Integer getDiscountMoney() {
+    public double getDiscountMoney() {
         return discountMoney;
     }
 

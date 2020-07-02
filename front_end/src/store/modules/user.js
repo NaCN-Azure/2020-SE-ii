@@ -16,7 +16,7 @@ import {
     getUserOrdersAPI,
     cancelOrderAPI,
     commentAddApI,
-
+    getHistoryOrdersAPI
 } from '@/api/order'
 import {dataToArray} from "ant-design-vue/lib/vc-drawer/src/utils";
 
@@ -40,8 +40,8 @@ const user = {
             corporationName:""
         },
         enrollVIPVisible:false,
-        userOrderList: [
-        ],
+        userOrderList: [],
+        historyOrderList:[],
         addCommentVisible:false,
         commentVisible:true,
         activeOrderId:-1,
@@ -99,6 +99,9 @@ const user = {
         },
         set_userOrderList: (state, data) => {
             state.userOrderList = data
+        },
+        set_historyOrderList:(state,data)=>{
+            state.historyOrderList = data
         },
         set_commentParams:(state,data)=>{
              state.commentParams={
@@ -174,6 +177,19 @@ const user = {
             if(res){
                 commit('set_userOrderList', res)
                 console.log(state.userOrderList)
+            }
+        },
+        getHistoryOrders: async({ state, commit },data) => {
+            console.log(data)
+            const params = {
+                userId: data[0],
+                hotelId: data[1],
+            }
+            const res = await getHistoryOrdersAPI(params)
+            console.log(res)
+            if(res){
+                commit('set_historyOrderList', res)
+                console.log(state.historyOrderList)
             }
         },
         cancelOrder: async({ state, dispatch }, orderId) => {
