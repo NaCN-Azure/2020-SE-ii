@@ -16,6 +16,7 @@ import {
     addRoomAPI,
     deleteRoomAPI,
     hotelAllRoomsAPI,
+    changeRoomAPI,
 } from '@/api/hotelManager'
 import {
     reserveHotelAPI
@@ -266,6 +267,17 @@ const hotel = {
                 dispatch('getHotelRoom',res)
             }else{
                 message.error('删除失败')
+            }
+        },
+        changeRoom: async({ state, dispatch, commit },data) => {
+            console.log(data)
+            const res = await changeRoomAPI(data)
+            if(res){
+                message.success('添加成功')
+                window.location.reload()
+                dispatch('getHotelRoom',state.addRoomParams.hotelId)
+            }else{
+                message.error('添加失败')
             }
         },
         deleteHotelById:async({state},id)=>{

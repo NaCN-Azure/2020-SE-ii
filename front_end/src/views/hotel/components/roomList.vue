@@ -19,12 +19,22 @@
                         slot-scope="text, record"
                 >
                     <div :key="col">
+
                         <a-input
-                                v-if="record.editable"
+                                v-if="record.editable&&col!=='roomType'&&col!=='breakfast'"
                                 style="margin: -5px 0"
                                 :value="text"
                                 @change="e => handleChange(e.target.value, record.key, col)"
                         />
+                        <a-select v-else-if="record.editable&&col==='roomType'" v-model="record.roomType"  @click="e => handleChange(e.target.value, record.key, col)" >
+                            <a-select-option value="BigBed">大床房</a-select-option>
+                            <a-select-option value="DoubleBed">双床房</a-select-option>
+                            <a-select-option value="Family">家庭房</a-select-option>
+                        </a-select>
+                        <a-select v-else-if="record.editable&&col==='breakfast'" v-model="record.breakfast"  @click="e => handleChange(e.target.value, record.key, col)" >
+                            <a-select-option value=yes>有</a-select-option>
+                            <a-select-option value=no>无</a-select-option>
+                        </a-select>
                         <template v-else>
                             {{ text }}
                         </template>
@@ -75,16 +85,19 @@ const columns = [
       title: '房型',
       dataIndex: 'roomType',
       key: 'roomType',
+        scopedSlots: { customRender: 'roomType'}
     },
     {
       title: '早餐',
       dataIndex: 'breakfast',
       key: 'breakfast',
+        scopedSlots: { customRender: 'breakfast'}
     },
     {
         title:'可用房间',
         dataIndex: 'total',
         key:'total',
+        scopedSlots: { customRender: 'total'}
     },
     {
       title:'剩余房间',
@@ -95,6 +108,7 @@ const columns = [
       title: '入住人数',
       key: 'peopleNum',
       dataIndex: 'peopleNum',
+       scopedSlots: { customRender: 'peopleNum'}
     },
     {
       title: '房价',
@@ -187,6 +201,7 @@ export default {
             'deleteRoomById',
             'getHotelById',
             'getHotelRoom',
+            'changeRoom'
         ]),
         order(record) {
 
@@ -232,6 +247,7 @@ export default {
             const target = newData.filter(item => key === item.key)[0];
             const targetCache = newCacheData.filter(item => key === item.key)[0];
             if (target && targetCache) {
+                this.changeRoom(target)
                 delete target.editable;
                 this.data = newData;
                 Object.assign(targetCache, target);

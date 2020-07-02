@@ -24,6 +24,14 @@ export function deleteRoomAPI(data) {
         params: {id: data},
     })
 }
+export function changeRoomAPI(data) {
+    console.log(data)
+    return axios({
+        url: `${api.hotelPre}/changeRoomAPI`,
+        method: 'POST',
+        data,
+    })
+}
 export function hotelAllRoomsAPI(hotelId) {
     console.log('here')
     return axios({
