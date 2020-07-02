@@ -46,7 +46,7 @@
         <div class="logout">
             <a-dropdown placement="bottomCenter">
                 <div class="user">
-                    <a-avatar src="./defaultAvatar.png"></a-avatar>
+                    <a-avatar icon="user"></a-avatar>
                     <span style="font-size: 14px">{{ userInfo.userName }}</span>
                     <a-icon style="margin-left: 3px; font-size: 16px" type="down"></a-icon>
                 </div>
@@ -59,7 +59,7 @@
                         <a-icon type="profile"></a-icon>
                         我的信息
                     </a-menu-item>
-                    <a-menu-item @click="beVIP()">
+                    <a-menu-item @click="beVIP()" v-if="userInfo.userType=='Client'">
                         <a-icon type="crown" />
                         注册会员
                     </a-menu-item>
