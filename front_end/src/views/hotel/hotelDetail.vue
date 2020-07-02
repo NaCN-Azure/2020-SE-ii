@@ -113,9 +113,21 @@
                         <RoomList :rooms="currentHotelInfo.rooms" v-if="userInfo.userType=='HotelManager'"></RoomList>
                     </a-tab-pane>
                     <a-tab-pane tab="酒店详情" key="2" v-if="userInfo.userType=='Client'">
-                        <a-timeline>
-                            <template  v-for="item in timeList">
-                                <a-timeline-item :key="item.key">{{item.title}}</a-timeline-item>
+                        <a-timeline class="hotel-detail">
+                            <template  v-for="item in historyOrderList">
+                                <a-timeline-item :key="item.id"></a-timeline-item>
+                                <a-timeline-item :key="item.id" color="green">入住于{{item.checkInDate}}</a-timeline-item>
+                                <a-timeline-item :key="item.id">
+                                    <a-icon slot="dot" type="clock-circle-o" style="font-size: 16px;" />
+                                    房间类型：{{item.roomType}}
+                                     房间数量：{{item.roomNum}}
+                                     入住人数：{{item.peopleNum}}
+                                     价格：{{item.price}}
+                                </a-timeline-item>
+                                <a-timeline-item color="red" :key="item.id">
+                                    离开于{{item.checkOutDate}}
+                                </a-timeline-item>
+
                             </template>
                         </a-timeline>
                     </a-tab-pane>
@@ -147,14 +159,40 @@
     })
     import HistoryComment from "./components/historyComment";
     const timeList=[{
-        title: '房型',
-        dataIndex: 'roomType',
-        key: '1',
+        checkInDate: "2020-07-02",
+        checkOutDate: "2020-07-03",
+        clientName: "测试二号",
+        createDate: "2020-07-02",
+        haveChild: false,
+        hotelId: 1,
+        hotelName: "汉庭酒店",
+        id: 14,
+        orderState: "已预订",
+        peopleNum: 2,
+        phoneNumber: "12345678911",
+        price: 348,
+        roomId: 2,
+        roomNum: 2,
+        roomType: "BigBed",
+        userId: 5,
     },
         {
-            title: '早餐',
-            dataIndex: 'breakfast',
-            key: '2',
+            checkInDate: "2020-07-02",
+            checkOutDate: "2020-07-03",
+            clientName: "测试二号",
+            createDate: "2020-07-02",
+            haveChild: false,
+            hotelId: 1,
+            hotelName: "汉庭酒店",
+            id: 14,
+            orderState: "已预订",
+            peopleNum: 2,
+            phoneNumber: "12345678911",
+            price: 348,
+            roomId: 2,
+            roomNum: 2,
+            roomType: "BigBed",
+            userId: 5,
         },
     ]
      const columns = [
@@ -221,11 +259,13 @@ export default {
     props:{},
     computed: {
         ...mapGetters([
+            'userId',
             'currentHotelInfo',
             'userInfo',
             'currentHotelId',
             'currentHotelUrl',
-            'roomList'
+            'roomList',
+            'historyOrderList',
         ]),
         image_url:function () {
             // return "https://test-nju-1.oss-cn-shenzhen.aliyuncs.com/hotel/timg.png"
@@ -236,11 +276,14 @@ export default {
     },
     async mounted() {
         this.set_currentHotelId(Number(this.$route.params.hotelId))
+        console.log(this.currentHotelInfo.id)
         await this.getHotelById()
         await this.getHotelUrlById()
+        let data=[]
+        data.push(this.userId,this.currentHotelInfo.id)
+        this.getHistoryOrders(data)
         this.getHotelRoom(this.currentHotelId)
         this.values=this.currentHotelInfo.hotelStar
-        // console.log(this.currentHotelInfo)
         // console.log(this.currentHotelInfo.historyComments)
         console.log(this.currentHotelUrl)
         this.testMethods()
@@ -262,7 +305,8 @@ export default {
             'getHotelUrlById',
             'updateUrl',
             'searchRoomlByDate',
-            'getHotelRoom'
+            'getHistoryOrders',
+            'getHotelRoom',
 
         ]),
         order(record) {
@@ -361,7 +405,12 @@ export default {
                 .value {
                     margin-right: 15px
                 }
-
         }
+
+    }
+    .hotel-detail{
+        margin-left: 50px;
+        font-size: 30px;
+        font-family: Avenir, 'WenQuanYi Micro Hei', Arial, Helvetica, sans-serif;
     }
 </style>
