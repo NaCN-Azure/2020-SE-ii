@@ -127,6 +127,7 @@ public class CouponServiceImpl implements CouponService {
         for (int i = 0; i < hotelCoupons.size(); i++) {
             if(hotelCoupons.get(i).getCouponType()==1){
                 if( ldt.substring(0,10).equals(birthday)) {
+                    availAbleCoupons.add(hotelCoupons.get(i));
 
                 }
                 else
@@ -134,9 +135,10 @@ public class CouponServiceImpl implements CouponService {
                     hotelCoupons.get(i).setDiscount(0);
                     hotelCoupons.get(i).setDiscountMoney(0);
                     hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
+                    availAbleCoupons.add(hotelCoupons.get(i));
                 }
             }}
-        return hotelCoupons;
+        return availAbleCoupons;
 
 
 
