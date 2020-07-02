@@ -271,3 +271,26 @@ export default {
     }
 }
 </script>
+<style scoped lang="less">
+    .hotel-info {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+    .info{
+        padding: 10px 0;
+        display: flex;
+        width: 280px;
+        flex-direction: column;
+        margin-left: 20px;
+
+    .label{
+        margin-right: 15px;
+        font-size: 18px;
+    }
+    .value {
+        margin-right: 15px
+    }
+    }
+
+    }
+</style>

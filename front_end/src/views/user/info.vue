@@ -129,74 +129,32 @@
             </a-tab-pane>
             <a-tab-pane tab="会员中心" key="3" v-if="userInfo.userType==='Client'">
                 <div class="vip-info">
+                    <div class="info">
+                        <a-form :form="form" style="margin-top: 30px">
+                            <a-form-item label="会员等级" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1  }">
+                                <a-rate style="font-size: 15px" :value="userInfo.isVIP" disabled/>
+                                <a-tag color="#2db7f5">
+                                    level{{ userInfo.isVIP }}
+                                </a-tag>
+                            </a-form-item>
+
+                            <a-form-item label="合作企业" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1 }">
+                                <a-tag  color="orange">
+                                    {{ userInfo.corporationName }}
+                                </a-tag>
+                            </a-form-item>
+
+                        </a-form>
+                    </div>
+                    <a-divider></a-divider>
                     <a-card style="width: 300px;">
                         <img
                                 alt="example"
-                                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                                src="https://pic2.zhimg.com/v2-5b024964872620cbdeb69b7027e13767_r.jpg"
                                 slot="cover"
                                 referrerPolicy="no-referrer"
                         />
                     </a-card>
-                    <div class="info">
-                        <text v-if="userInfo.corporationName==''">xx</text>
-<!--                        <a-form :form="form" style="margin-top: 10px">-->
-<!--                            <a-form-item label="酒店名称" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3  }">-->
-<!--                                <a-input-->
-<!--                                        placeholder="请填写酒店名称"-->
-<!--                                        v-decorator="['name', { rules: [{ required: true, message: '请输入酒店名称' }] }]"-->
-<!--                                        v-if="modify"-->
-<!--                                />-->
-<!--                                <span v-else>{{ currentHotelInfo.name }}</span>-->
-<!--                            </a-form-item>-->
-<!--                            <a-form-item label="地址" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3 }">-->
-<!--                                <a-input-->
-<!--                                        placeholder="请填写酒店地址"-->
-<!--                                        v-decorator="['address', { rules: [{ required: true, message: '请输入酒店地址' }] }]"-->
-<!--                                        v-if="modify"-->
-<!--                                />-->
-<!--                                <span v-else>{{ currentHotelInfo.address }}</span>-->
-<!--                            </a-form-item>-->
-<!--                            <a-form-item label="商圈" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3 }">-->
-<!--                                <a-input-->
-<!--                                        placeholder="请填写酒店所在商圈"-->
-<!--                                        v-decorator="['bizRegion', { rules: [{ required: true, message: '请输入酒店所在商圈' }] }]"-->
-<!--                                        v-if="modify"-->
-<!--                                />-->
-<!--                                <span v-else>{{ currentHotelInfo.bizRegion }}</span>-->
-<!--                            </a-form-item>-->
-<!--                            <a-form-item label="评分" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3 }">-->
-<!--                                <span  class="value">{{ currentHotelInfo.rate }}</span>-->
-<!--                            </a-form-item>-->
-
-<!--                            <a-form-item label="星级" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3 }">-->
-<!--                                <a-rate style="font-size: 15px" v-if="modify" v-model="values"/>-->
-<!--                                <a-rate style="font-size: 15px" :value="currentHotelInfo.hotelStar" v-else disabled/>-->
-<!--                            </a-form-item>-->
-
-<!--                            <a-form-item label="酒店简介" :label-col="{ span: 10 }" :wrapper-col="{ span: 10, offset: 3 }">-->
-<!--                                <a-input-->
-<!--                                        placeholder="请填写酒店简介"-->
-<!--                                        v-decorator="['description', { rules: [{ required: true, message: '请输入酒店简介' }] }]"-->
-<!--                                        v-if="modify"-->
-<!--                                />-->
-<!--                                <span v-else>{{ currentHotelInfo.description }}</span>-->
-<!--                            </a-form-item>-->
-<!--                            <a-form-item :wrapper-col="{ span: 12, offset: 5 }" v-if="modify">-->
-<!--                                <a-button type="primary" @click="saveModify">-->
-<!--                                    保存-->
-<!--                                </a-button>-->
-<!--                                <a-button type="default" style="margin-left: 10px" @click="cancelModify">-->
-<!--                                    取消-->
-<!--                                </a-button>-->
-<!--                            </a-form-item>-->
-<!--                            <a-form-item :wrapper-col="{ span: 8, offset: 4 }" v-else-if="userInfo.userType=='HotelManager'" >-->
-<!--                                <a-button type="primary" @click="modifyInfo" >-->
-<!--                                    修改信息-->
-<!--                                </a-button>-->
-<!--                            </a-form-item>-->
-<!--                        </a-form>-->
-
-                    </div>
                 </div>
             </a-tab-pane>
         </a-tabs>
