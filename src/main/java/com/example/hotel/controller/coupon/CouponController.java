@@ -17,8 +17,8 @@ public class CouponController {
     private CouponService couponService;
 
     @PostMapping("/hotelTargetMoney")
-    public ResponseVO addHotelTargetMoneyCoupon(@RequestBody HotelTargetMoneyCouponVO hotelTargetMoneyCouponVO) {
-        CouponVO couponVO = couponService.addHotelTargetMoneyCoupon(hotelTargetMoneyCouponVO);
+    public ResponseVO addHotelTargetMoneyCoupon(@RequestBody CouponVO CouponVO) {
+        CouponVO couponVO = couponService.addHotelTargetMoneyCoupon(CouponVO);
         return ResponseVO.buildSuccess(couponVO);
     }
 

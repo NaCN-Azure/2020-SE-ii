@@ -36,7 +36,7 @@ public interface CouponService {
      * @param couponVO
      * @return
      */
-    CouponVO addHotelTargetMoneyCoupon(HotelTargetMoneyCouponVO couponVO);
+    CouponVO addHotelTargetMoneyCoupon(CouponVO couponVO);
 
     void updateCouponInfo(CouponVO couponVO);
 
