@@ -149,12 +149,12 @@
     const timeList=[{
         title: '房型',
         dataIndex: 'roomType',
-        key: 'roomType',
+        key: '1',
     },
         {
             title: '早餐',
             dataIndex: 'breakfast',
-            key: 'breakfast',
+            key: '2',
         },
     ]
      const columns = [
@@ -210,6 +210,7 @@ export default {
         return {
             flag:true,
             columns,
+            timeList,
             temp:[],
             modify: false,
             values:'',

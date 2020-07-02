@@ -30,6 +30,13 @@ export function getUserOrdersAPI(data) {
         method: 'GET',
     })
 }
+export function getHistoryOrdersAPI(params) {
+    return axios({
+        url: `${api.orderPre}/getUserOrders`,
+        method: 'GET',
+        params,
+    })
+}
 export function getHotelOrdersAPI(data) {
     console.log("!!!")
    console.log(data.hotelId)

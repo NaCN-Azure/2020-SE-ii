@@ -46,7 +46,7 @@ CREATE TABLE `Coupon` (
 --
 BEGIN;
 /*!40000 ALTER TABLE `Coupon` DISABLE KEYS */;
-INSERT INTO `Coupon` VALUES (2,'满500-100优惠',2,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(1,'满300-50优惠',1,3,'满减优惠券',300,0,1,'2020-05-16','2020-7-02',50),(3,'满500-100优惠',3,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100);
+INSERT INTO `Coupon` VALUES (2,'满500-100优惠',2,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(1,'满300-50优惠',1,3,'满减优惠券',300,0,1,'2020-05-16','2020-7-02',50),(3,'满500-100优惠',3,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(4,'生日优惠',3,1,'生日优惠券',500,0,1,'2020-05-16','2020-7-02',100),(5,'生日优惠',3,1,'生日优惠券',700,2,1,'2020-05-16','2020-7-02',100);
 /*!40000 ALTER TABLE `Coupon` ENABLE KEYS */;
 COMMIT;
 
@@ -63,18 +63,18 @@ DROP TABLE IF EXISTS `SalerCoupon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SalerCoupon` (
-                          `id` int(11) NOT NULL AUTO_INCREMENT,
-                          `description` varchar(255) DEFAULT NULL,
-                          `hotelId` int(11) DEFAULT '-1',
-                          `couponType` int(11) NOT NULL,
-                          `couponName` varchar(255) NOT NULL,
-                          `target_money` int(11) DEFAULT NULL,
-                          `discount` double DEFAULT NULL,
-                          `status` int(11) DEFAULT NULL,
-                          `start_time` varchar(255) DEFAULT NULL,
-                          `end_time` varchar(255) DEFAULT NULL,
-                          `discount_money` int(11) DEFAULT NULL,
-                          PRIMARY KEY (`id`)
+                               `id` int(11) NOT NULL AUTO_INCREMENT,
+                               `description` varchar(255) DEFAULT NULL,
+                               `hotelId` int(11) DEFAULT '-1',
+                               `couponType` int(11) NOT NULL,
+                               `couponName` varchar(255) NOT NULL,
+                               `target_money` int(11) DEFAULT NULL,
+                               `discount` double DEFAULT NULL,
+                               `status` int(11) DEFAULT NULL,
+                               `start_time` varchar(255) DEFAULT NULL,
+                               `end_time` varchar(255) DEFAULT NULL,
+                               `discount_money` int(11) DEFAULT NULL,
+                               PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,7 +83,7 @@ CREATE TABLE `SalerCoupon` (
 --
 BEGIN;
 /*!40000 ALTER TABLE `SalerCoupon` DISABLE KEYS */;
-INSERT INTO `SalerCoupon` VALUES (2,'满500-100优惠',2,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(1,'满300-50优惠',1,3,'满减优惠券',300,0,1,'2020-05-16','2020-7-02',50),(3,'满500-100优惠',3,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100);
+INSERT INTO `SalerCoupon` VALUES (2,'满500-100优惠',2,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(1,'满300-50优惠',1,3,'满减优惠券',300,0,1,'2020-05-16','2020-7-02',50),(3,'满500-100优惠',3,3,'满减优惠券',500,0,1,'2020-05-16','2020-7-02',100),(4,'生日优惠',3,1,'生日优惠券',500,0,1,'2020-05-16','2020-7-02',100),(5,'生日优惠',3,1,'生日优惠券',700,2,1,'2020-05-16','2020-7-02',100);
 ;
 /*!40000 ALTER TABLE `SalerCoupon` ENABLE KEYS */;
 COMMIT;
@@ -97,9 +97,9 @@ DROP TABLE IF EXISTS `HotelPic`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `HotelPic` (
-                               `id` int(11) NOT NULL AUTO_INCREMENT,
-                               `url` varchar(255) DEFAULT NULL,
-                               PRIMARY KEY (`id`)
+                            `id` int(11) NOT NULL AUTO_INCREMENT,
+                            `url` varchar(255) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,13 +124,13 @@ DROP TABLE IF EXISTS `AD`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AD` (
-                               `id` int(11) NOT NULL AUTO_INCREMENT,
-                               `uid` varchar(255) DEFAULT NULL,
-                               `name` varchar(255) NOT NULL,
-                               `status` varchar(255) NOT NULL,
-                               `url` varchar(255) NOT NULL,
-                               `thumbUrl` varchar(255) NOT NULL,
-                               PRIMARY KEY (`id`)
+                      `id` int(11) NOT NULL AUTO_INCREMENT,
+                      `uid` varchar(255) DEFAULT NULL,
+                      `name` varchar(255) NOT NULL,
+                      `status` varchar(255) NOT NULL,
+                      `url` varchar(255) NOT NULL,
+                      `thumbUrl` varchar(255) NOT NULL,
+                      PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -173,7 +173,7 @@ BEGIN;
 /*!40000 ALTER TABLE `Hotel` DISABLE KEYS */;
 INSERT INTO `Hotel` VALUES (1,'汉庭酒店','欢迎您入住','上海市浦东新区','XiDan',4,1829373819,4.8,1),(2,'儒家酒店','欢迎您入住','南京市鼓楼区珠江路268号','XiDan',4,1829373819,4.8,2),(3,'桂圆酒店','欢迎您入住','南京市栖霞区珠江路268号','XiDan',4,1829553719,4.8,6),(4,'W酒店','欢迎您入住','西安市曲江六号','XiDan',4,1829553719,4.2,6),
                            (5,'利兹卡尔顿','欢迎您入住','西安市高新路','XiDan',5,1829553719,4.9,6),(6,'宜居酒店','欢迎您入住','南京市仙林大道168号','XiDan',5,1829553719,3.7,6),(7,'莱安逸会','欢迎您入住','西安市雁塔区','XiDan',5,1829553719,4.9,6),(8,'莱安逸景','欢迎您入住','西安市雁塔区','XiDan',5,1829553719,4.9,6),(9,'君悦酒店','欢迎您入住','上海市陆家嘴','XiDan',5,1829553719,4.9,6)
-                          ,(10,'凯乐酒店','欢迎您入住','北京市朝阳区','XiDan',5,1829553719,4.9,6),(11,'西夏酒店','欢迎您入住','银川市怀远西路','XiDan',4,1829553719,4.9,6)
+        ,(10,'凯乐酒店','欢迎您入住','北京市朝阳区','XiDan',5,1829553719,4.9,6),(11,'西夏酒店','欢迎您入住','银川市怀远西路','XiDan',4,1829553719,4.9,6)
 
 ;
 /*!40000 ALTER TABLE `Hotel` ENABLE KEYS */;
@@ -251,13 +251,13 @@ DROP TABLE IF EXISTS `RoomDetail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `RoomDetail` (
-                        `id` int(11) NOT NULL AUTO_INCREMENT,
-                        `room_id` int(11) DEFAULT NULL,
-                        `can_use` int(11) DEFAULT 1,
-                        `start_time` varchar(100) DEFAULT NULL,
-                        `end_time` varchar(100) DEFAULT NULL,
-                        `order_id` int(11) DEFAULT -1,
-                        PRIMARY KEY (`id`)
+                              `id` int(11) NOT NULL AUTO_INCREMENT,
+                              `room_id` int(11) DEFAULT NULL,
+                              `can_use` int(11) DEFAULT 1,
+                              `start_time` varchar(100) DEFAULT NULL,
+                              `end_time` varchar(100) DEFAULT NULL,
+                              `order_id` int(11) DEFAULT -1,
+                              PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -297,7 +297,7 @@ BEGIN;
 INSERT INTO `Comment` VALUES (1,'Flow Light',4,'#f52de8',100,'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',1,2,3),
                              (2,'Mr.Eight',4,'#7265e6',120,'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',1,2,4);
 /*!40000 ALTER TABLE `Comment` ENABLE
-KEYS */;
+    KEYS */;
 COMMIT;
 
 
