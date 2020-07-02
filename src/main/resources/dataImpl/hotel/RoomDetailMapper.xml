@@ -16,6 +16,11 @@
         select * from Roomdetail where room_id=#{room_id}
     </select>
 
+    <update id="changeDetailRoom">
+        update Roomdetail set start_time=#{start_time},end_time=#{end_time}
+        where order_id=#{order_id}
+    </update>
+
     <resultMap id="Roomdetail" type="com.example.hotel.po.HotelRoomDetail">
         <id column="id" property="id"></id>
         <result column="room_id" property="room_id"></result>

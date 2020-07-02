@@ -150,6 +150,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ResponseVO changeOrder(OrderVO order){
         int orderid=order.getId();
+        roomDetailMapper.changeDetailRoom(orderid,order.getCheckInDate(),order.getCheckOutDate());
         orderMapper.deleteOrder(orderid);
         return addOrder(order);
     }

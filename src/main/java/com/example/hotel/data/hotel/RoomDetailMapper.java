@@ -17,4 +17,6 @@ public interface RoomDetailMapper {
 
     List<HotelRoomDetail> getAllDetailRooms(@Param("room_id") Integer room_id);
 
+    int changeDetailRoom(@Param("order_id") Integer order_id,@Param("start_time") String start_time,@Param("end_time") String end_time);
+
 }

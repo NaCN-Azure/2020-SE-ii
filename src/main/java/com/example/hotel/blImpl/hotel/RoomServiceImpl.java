@@ -70,11 +70,16 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<HotelRoom> getHotelAllRooms(Integer hotelId){
         //return roomMapper.selectRoomsByHotelId(hotelId);
-        return getHotelAllRoomsInDate(hotelId,"2000-01-01","2030-01-01");
+        String nowTime=LocalDateTime.now().toString().substring(0,10);
+        String nextWeek=LocalDateTime.now().plusDays(7).toString().substring(0,10);
+        return getHotelAllRoomsInDate(hotelId,nowTime,nextWeek);
     }
 
     @Override
     public  List<HotelRoom> getHotelAllRoomsInDate(Integer hotelId,String start_time,String end_time){
+        if(start_time.equals("")||end_time.equals("")){
+            return getHotelAllRooms(hotelId);
+        }
         List<HotelRoom> rooms=roomMapper.selectRoomsByHotelId(hotelId);
         for(int i=0;i<rooms.size();i++){
             HotelRoom temp=rooms.get(i);
@@ -108,6 +113,13 @@ public class RoomServiceImpl implements RoomService {
 
     public int getRoomCurNum_sub(Integer hotelId, String roomType) {
         return 1;
+    }
+
+    public static void main(String[] args) {
+        String nowTime=LocalDateTime.now().toString().substring(0,10);
+        String nextWeek=LocalDateTime.now().plusDays(7).toString().substring(0,10);
+        System.out.println(nextWeek);
+        System.out.println(nowTime);
     }
 
 

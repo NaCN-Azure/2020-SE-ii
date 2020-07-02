@@ -23,6 +23,10 @@ public class AccountServiceImpl implements AccountService {
     public ResponseVO registerAccount(UserVO userVO) {
         User user = new User();
         BeanUtils.copyProperties(userVO,user);
+        User temp=accountMapper.getAccountByName(userVO.getEmail());
+        if(temp!=null){
+            return ResponseVO.buildFailure(ACCOUNT_EXIST);
+        }
         try {
             user.setHotelid(-1);
             user.setUserName(userVO.getUserName());
