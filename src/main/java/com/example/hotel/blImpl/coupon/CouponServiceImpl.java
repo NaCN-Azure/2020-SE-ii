@@ -3,14 +3,20 @@ package com.example.hotel.blImpl.coupon;
 import com.example.hotel.bl.coupon.CouponService;
 import com.example.hotel.bl.coupon.CouponMatchStrategy;
 import com.example.hotel.data.coupon.CouponMapper;
+import com.example.hotel.data.user.AccountMapper;
 import com.example.hotel.po.Coupon;
+import com.example.hotel.po.User;
 import com.example.hotel.vo.CouponVO;
 import com.example.hotel.vo.HotelTargetMoneyCouponVO;
 import com.example.hotel.vo.OrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,6 +30,8 @@ public class CouponServiceImpl implements CouponService {
     private final CouponMapper couponMapper;
 
     private static List<CouponMatchStrategy> strategyList = new ArrayList<>();
+    @Autowired
+    AccountMapper accountMapper;
 
     @Autowired
     public CouponServiceImpl(TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy,
@@ -101,4 +109,35 @@ public class CouponServiceImpl implements CouponService {
     public void deleteCoupon(Integer id){
         couponMapper.deleteCoupon(id);
     }
+
+    @Override
+    public List<Coupon> getMatchHotelCoupon(int userid, int hotelid,double orderprice,int roomNum,String checkIn, String checkOut){
+        List<Coupon> hotelCoupons = getHotelAllCoupon(hotelid);
+
+        List<Coupon> availAbleCoupons = new ArrayList<>();
+
+        User user=accountMapper.getAccountById(userid);
+
+        String birthday=user.getBirthday();
+
+        LocalDateTime nowTime= LocalDateTime.now();
+
+        String ldt=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+
+        for (int i = 0; i < hotelCoupons.size(); i++) {
+            if(hotelCoupons.get(i).getCouponType()==1 && ldt.substring(0,10).equals(birthday)) {
+                availAbleCoupons.add(hotelCoupons.get(i));
+            }
+        }
+        return availAbleCoupons;
+
+
+
+
+
+
+
+
+    }
+
 }

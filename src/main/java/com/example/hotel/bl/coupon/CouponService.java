@@ -16,6 +16,15 @@ public interface CouponService {
     List<Coupon> getMatchOrderCoupon(OrderVO orderVO);
 
     /**
+     * 返回对应酒店的优惠策略列表
+     * @param
+     * @return
+     */
+
+    List<Coupon> getMatchHotelCoupon(int userid, int hotelid,double orderprice,int roomNum,String checkIn, String checkOut);
+
+
+    /**
      * 查看某个酒店提供的所有优惠策略（包括失效的）
      * @param hotelId
      * @return
