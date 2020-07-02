@@ -93,7 +93,7 @@
                         <a-alert
                                 v-if="userInfo.userType=='Client'&&flag==true"
                                 message="提示"
-                                description="如果您没有选择时间段，将默认返回近一周内一直空闲的房间"
+                                description="如果您没有选择时间段，将默认返回近两个月内一直空闲的房间"
                                 type="info"
                                 show-icon
                         />
@@ -112,8 +112,12 @@
 
                         <RoomList :rooms="currentHotelInfo.rooms" v-if="userInfo.userType=='HotelManager'"></RoomList>
                     </a-tab-pane>
-                    <a-tab-pane tab="酒店详情" key="2">
-
+                    <a-tab-pane tab="酒店详情" key="2" v-if="userInfo.userType=='Client'">
+                        <a-timeline>
+                            <template  v-for="item in timeList">
+                                <a-timeline-item :key="item.key">{{item.title}}</a-timeline-item>
+                            </template>
+                        </a-timeline>
                     </a-tab-pane>
                     <a-tab-pane tab="历史评价" key="3">
                         <HistoryComment :comments="currentHotelInfo.historyCommentVOs"></HistoryComment>
@@ -142,6 +146,17 @@
         secure: true,
     })
     import HistoryComment from "./components/historyComment";
+    const timeList=[{
+        title: '房型',
+        dataIndex: 'roomType',
+        key: 'roomType',
+    },
+        {
+            title: '早餐',
+            dataIndex: 'breakfast',
+            key: 'breakfast',
+        },
+    ]
      const columns = [
         {
             title: '房型',

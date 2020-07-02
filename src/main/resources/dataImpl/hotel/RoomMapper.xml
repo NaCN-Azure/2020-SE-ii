@@ -14,7 +14,7 @@
 
     <update id="changeRoom">
         update Room set breakfast=#{breakfast},total=#{total},price=#{price},peopleNum=#{peopleNum}
-        where id=#{id} and hotelId=#{hotelId}
+        where id=#{id} and hotel_id=#{hotelId}
     </update>
 
     <delete id="deleteRoom">

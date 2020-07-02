@@ -102,7 +102,7 @@ public class CouponServiceImpl implements CouponService {
         coupon.setStatus(couponVO.getStatus());
         coupon.setId(couponVO.getId());
         couponMapper.updateCoupon(coupon.getId(),coupon.getDescription(),coupon.getCouponName(),coupon.getCouponType(),
-                   coupon.getStatus(),coupon.getStartTime(),coupon.getEndTime());
+                coupon.getStatus(),coupon.getStartTime(),coupon.getEndTime());
     }
 
     @Override
@@ -125,16 +125,17 @@ public class CouponServiceImpl implements CouponService {
         String ldt=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
         for (int i = 0; i < hotelCoupons.size(); i++) {
-            if(hotelCoupons.get(i).getCouponType()==1 && ldt.substring(0,10).equals(birthday)) {
+            if(hotelCoupons.get(i).getCouponType()==1){
+                if( ldt.substring(0,10).equals(birthday)) {
 
-            }
-            else
-            {
-                hotelCoupons.get(i).setDiscount(0);
-                hotelCoupons.get(i).setDiscountMoney(0);
-                hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
-            }
-        }
+                }
+                else
+                {
+                    hotelCoupons.get(i).setDiscount(0);
+                    hotelCoupons.get(i).setDiscountMoney(0);
+                    hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
+                }
+            }}
         return hotelCoupons;
 
 

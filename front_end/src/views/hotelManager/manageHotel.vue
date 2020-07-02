@@ -9,7 +9,6 @@
                 <a-table
                         :columns="columns1"
                         :dataSource="data"
-                        :scroll="{ x: 1500}"
                         bordered
                 >
                     <template
@@ -44,18 +43,7 @@
 
                         </div>
                     </template>
-<!--                    <span slot="action.." slot-scope="record1">-->
-<!--                        <a-button type="info" size="small" @click="changeCoupon(record1)">修改策略</a-button>-->
-<!--                        <a-divider type="vertical"></a-divider>-->
-<!--                        <a-popconfirm-->
-<!--                                title="确定想删除该优惠策略吗？"-->
-<!--                                @confirm="deleteCoupon(record1)"-->
-<!--                                okText="确定"-->
-<!--                                cancelText="取消"-->
-<!--                        >-->
-<!--                            <a-button type="danger" size="small">删除策略</a-button>-->
-<!--                        </a-popconfirm>-->
-<!--                    </span>-->
+
 
                 </a-table>
             </a-tab-pane>
@@ -109,14 +97,12 @@
         {
             title: '优惠券名',
             dataIndex: 'couponName',
-            fixed: 'left',
-            width: 100,
+            width: 150,
             scopedSlots: { customRender: 'couponName' },
         },
         {
             title: '优惠券类型',
             dataIndex: 'couponType',
-            fixed: 'left',
             width: 150,
             scopedSlots: { customRender: 'couponType' },
         },
@@ -129,19 +115,19 @@
         {
             title: '达标金额',
             dataIndex: 'targetMoney',
-            width: 150,
+            width: 100,
             scopedSlots: { customRender: 'targetMoney' },
         },
         {
             title: '折扣',
             dataIndex: 'discount',
-            width: 150,
+            width: 100,
             scopedSlots: { customRender: 'discount' },
         },
         {
             title: '优惠金额',
             dataIndex: 'discountMoney',
-            width: 150,
+            width: 100,
             scopedSlots: { customRender: 'discountMoney' },
         },
         {
@@ -159,8 +145,7 @@
         {
             title: '操作',
             key: 'action',
-            fixed: 'right',
-            width: 250,
+            width: 200,
             scopedSlots: { customRender: 'action..' },
         },
     ];

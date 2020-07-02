@@ -27,10 +27,11 @@ export function orderMatchCouponsAPI(params) {
     })
 }
 
-export function updateCouponAPI(params) {
+export function updateCouponAPI(data) {
+    console.log(data)
     return axios({
         url: `${api.couponPre}/updateCouponInfo`,
         method: 'POST',
-        params,
+        data,
     })
 }

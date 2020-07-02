@@ -239,12 +239,8 @@ const hotelManager = {
 
         },
         updateCoupon: async ({state,commit,dispatch},data)=>{
-
             console.log(data)
-            const params = {
-                ...data,
-            }
-            const res = await updateCouponAPI(params)
+            const res = await updateCouponAPI(data)
             if(res){
                 message.success('修改成功')
                 dispatch('getHotelCoupon',data.hotelId)

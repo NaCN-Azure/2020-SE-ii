@@ -52,7 +52,7 @@ public class RoomServiceImpl implements RoomService {
     public void changeRoom(HotelRoom hotelRoom){
         System.out.println(hotelRoom.getPrice()+" ()()(");
         int hotelId=hotelRoom.getHotelId();
-        String breakfast=hotelRoom.getBreakfast().toString();
+        String breakfast=hotelRoom.getBreakfast().toString().equals("有")?"yes":"no";
         int peopleNum=hotelRoom.getPeopleNum();
         double price=hotelRoom.getPrice();
         int total=hotelRoom.getTotal();
@@ -71,7 +71,7 @@ public class RoomServiceImpl implements RoomService {
     public List<HotelRoom> getHotelAllRooms(Integer hotelId){
         //return roomMapper.selectRoomsByHotelId(hotelId);
         String nowTime=LocalDateTime.now().toString().substring(0,10);
-        String nextWeek=LocalDateTime.now().plusDays(7).toString().substring(0,10);
+        String nextWeek=LocalDateTime.now().plusDays(60).toString().substring(0,10);
         return getHotelAllRoomsInDate(hotelId,nowTime,nextWeek);
     }
 
