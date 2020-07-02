@@ -213,15 +213,19 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List<HotelVO> searchHotelbysection(String address,int[] hotelStar,int[] money,String name,int[] rate )
+
     {
+
+        System.out.println(address);
+        System.out.println(money[0]);
         List<HotelVO> allHotels=retrieveHotels();
         List<HotelVO> res=new ArrayList<HotelVO>();
         for(int i=0;i<allHotels.size();i++)
         {
-            if(getResult(allHotels.get(i).getAddress(),address)
-               && getResult(allHotels.get(i).getName(),name)
+            if((getResult(allHotels.get(i).getAddress(),address)
+               && getResult(allHotels.get(i).getName(),name))
                && allHotels.get(i).getHotelStar()>=hotelStar[0] && allHotels.get(i).getHotelStar()<=hotelStar[1]
-               && findmin(allHotels.get(i).getId())>=money[0] && findmax(allHotels.get(i).getId())<=money[1]
+               && findmin(allHotels.get(i).getId(),money[0]) && findmax(allHotels.get(i).getId(),money[1])
                && allHotels.get(i).getRate()>=rate[0] && allHotels.get(i).getRate()<=rate[1])
             {
                 res.add(allHotels.get(i));
@@ -246,19 +250,28 @@ public class HotelServiceImpl implements HotelService {
         }
     }
 
-    public double findmin(int hotelid)
+    //判断是否不低于顾客最低价格要求
+    public boolean findmin(int hotelid,int money)
     {
         List<HotelRoom> temp=roomMapper.selectRoomsByHotelId(hotelid);
+        System.out.println(temp.size());
         List<Double>  store_price=new ArrayList<Double>();
         for(int i=0;i<temp.size();i++)
         {
             store_price.add(temp.get(i).getPrice());
         }
         Collections.sort(store_price);
-        return store_price.get(0);
+        if(store_price.size()==0)
+        {
+            return true;
+        }
+        return store_price.get(0)>=money;
     }
 
-    public double findmax(int hotelid)
+
+    //判断是否不高于顾客最高价格要求
+
+    public boolean findmax(int hotelid,int money)
     {
         List<HotelRoom> temp=roomMapper.selectRoomsByHotelId(hotelid);
         List<Double>  store_price=new ArrayList<Double>();
@@ -267,7 +280,12 @@ public class HotelServiceImpl implements HotelService {
             store_price.add(temp.get(i).getPrice());
         }
         Collections.sort(store_price);
-        return store_price.get(store_price.size()-1);
+        if(store_price.size()==0)
+        {
+            return true;
+        }
+
+        return store_price.get(store_price.size()-1)<=money;
     }
 
 
