@@ -23,10 +23,9 @@ import java.util.List;
 @Service
 public class CouponServiceImpl implements CouponService {
 
-
     private final  TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy;
-
     private final  TimeCouponStrategyImpl timeCouponStrategy;
+    private final  TargetRoomNumberCouponStrategylmpl targetRoomNumberCouponStrategy;
     private final CouponMapper couponMapper;
 
     private static List<CouponMatchStrategy> strategyList = new ArrayList<>();
@@ -35,13 +34,15 @@ public class CouponServiceImpl implements CouponService {
 
     @Autowired
     public CouponServiceImpl(TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy,
-                             TimeCouponStrategyImpl timeCouponStrategy,
+                             TimeCouponStrategyImpl timeCouponStrategy,TargetRoomNumberCouponStrategylmpl targetRoomNumberCouponStrategy,
                              CouponMapper couponMapper) {
         this.couponMapper = couponMapper;
         this.targetMoneyCouponStrategy = targetMoneyCouponStrategy;
+        this.targetRoomNumberCouponStrategy=targetRoomNumberCouponStrategy;
         this.timeCouponStrategy = timeCouponStrategy;
         strategyList.add(targetMoneyCouponStrategy);
         strategyList.add(timeCouponStrategy);
+        strategyList.add(targetRoomNumberCouponStrategy);
     }
 
 
@@ -93,6 +94,7 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public void updateCouponInfo(CouponVO couponVO){
         System.out.println("114514 1919810");//判断前后端接口是否顺利接上的测试代码
+        System.out.println(couponVO.getName());
         Coupon coupon=new Coupon();
         coupon.setCouponName(couponVO.getName());
         coupon.setDescription(couponVO.getDescription());
@@ -137,15 +139,9 @@ public class CouponServiceImpl implements CouponService {
                     hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
                     availAbleCoupons.add(hotelCoupons.get(i));
                 }
-            }}
+            }
+        }
         return availAbleCoupons;
-
-
-
-
-
-
-
 
     }
 
