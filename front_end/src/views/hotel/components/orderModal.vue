@@ -251,8 +251,10 @@ export default {
                         peopleNum: this.form.getFieldValue('peopleNum'),
                         haveChild: this.form.getFieldValue('haveChild'),
                         createDate: '',
-                        price: this.checkedList.length > 0 ? this.finalPrice: this.totalPrice
+                        price: this.checkedList.length > 0 ? this.finalPrice: this.totalPrice,
+                        roomId:this.currentOrderRoom.id
                     }
+                    //console.log(data)
                     this.addOrder(data)
                 }
             });
