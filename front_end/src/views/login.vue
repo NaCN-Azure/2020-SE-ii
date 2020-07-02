@@ -1,16 +1,17 @@
 <template>
   <div class="main">
-      <div class="top">
-        <div class="header">
-          <div>
-            <!-- <img src="@/assets/logo.svg" class="logo" alt="logo"> -->
-            <span class="title">NJU酒店管理系统</span>
-          </div>
-        </div>
-        <div class="desc">
-          
+    <div class="top">
+      <div class="header">
+        <div>
+          <!-- <img src="@/assets/logo.svg" class="logo" alt="logo"> -->
+          <span class="title1">vacationLight</span>
+          <span class="title2"> 酒店管理系统</span>
         </div>
       </div>
+      <div class="desc">
+
+      </div>
+    </div>
     <a-form
       id="formLogin"
       class="user-layout-login"
@@ -248,7 +249,7 @@ export default {
             email: this.form.getFieldValue('registerUserMail'),
             password: this.form.getFieldValue('registerPassword'),
             phoneNumber: this.form.getFieldValue('registerPhoneNumber'),
-            userName: this.form.getFieldValue('registerUsername'),
+            username: this.form.getFieldValue('registerUsername'),
             birthday: this.form.getFieldValue('date').format('YYYY-MM-DD'),
             credit: 100,
             userType: 1
@@ -299,27 +300,35 @@ export default {
             border-style: none;
           }
 
-          .title {
-            font-size: 33px;
-            color: rgba(0, 0, 0, .85);
-            font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            position: relative;
-            top: 2px;
-          }
+        .title1 {
+          font-size: 35px;
+          color: rgba(0, 0, 0, .85);
+          font-family: Avenir, 'STXingkai', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          position: relative;
+          top: 2px;
         }
-        .desc {
-          font-size: 14px;
-          color: rgba(0, 0, 0, 0.45);
-          margin-top: 12px;
-          margin-bottom: 40px;
+        .title2 {
+          font-size: 30px;
+          color: rgba(0, 0, 0, .85);
+          font-family: Avenir, 'WenQuanYi Micro Hei', Arial, Helvetica, sans-serif;
+          font-weight: 600;
+          position: relative;
+          top: 2px;
         }
       }
-}
-.user-layout-login {
-  label {
-    font-size: 14px;
+      .desc {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+        margin-top: 12px;
+        margin-bottom: 40px;
+      }
+    }
   }
+  .user-layout-login {
+    label {
+      font-size: 14px;
+    }
 
   .getCaptcha {
     display: block;

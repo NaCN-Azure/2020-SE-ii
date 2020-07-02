@@ -1,8 +1,9 @@
 <template>
     <div class="header">
         <div class="label">
-            <img src="@/assets/logo.svg" class="logo" alt="logo" @click="jumpToHome">
-            <span class="title">NJUSE 酒店管理系统</span>
+            <img src="@/assets/logo2.png" class="logo" alt="logo" @click="jumpToHome">
+            <span class="title1">vactionLight</span>
+            <span class="title2"> 酒店管理系统</span>
 
         </div>
         <a-menu v-model="current" mode="horizontal" theme="light">
@@ -94,7 +95,7 @@
                 'enrollVIPVisible',
             ])
         },
-         async mounted() {
+        async mounted() {
             await this.getUserInfo()
             if (this.$route.name == 'hotelList' || this.$route.name == 'hotelDetail') {
                 this.current = ['1']
@@ -155,27 +156,36 @@
             vertical-align: middle;
             min-width: 400px;
 
+
             .logo {
-            height: 44px;
-            vertical-align: top;
-            margin-right: 16px;
-            border-style: none;
-            cursor: pointer;
-          }
+                height: 44px;
+                vertical-align: top;
+                margin-right: 16px;
+                border-style: none;
+                cursor: pointer;
+            }
 
-          .title {
-            font-size: 33px;
-            color: rgba(0, 0, 0, .85);
-            font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            position: relative;
-            top: 2px;
-          }
+            .title1 {
+                font-size: 35px;
+                color: rgba(0, 0, 0, .85);
+                font-family: Avenir, 'STXingkai', Arial, Helvetica, sans-serif;
+                font-weight: 600;
+                position: relative;
+                top: 2px;
+            }
+            .title2 {
+                font-size: 32px;
+                color: rgba(0, 0, 0, .85);
+                font-family: Avenir, 'WenQuanYi Micro Hei', Arial, Helvetica, sans-serif;
+                font-weight: 600;
+                position: relative;
+                top: 2px;
+            }
 
-          .search {
-              width: 300px; 
-              margin-left: 30px
-          }
+            .search {
+                width: 300px;
+                margin-left: 30px
+            }
         }
         .logout {
             margin-right: 40px;

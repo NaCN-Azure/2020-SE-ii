@@ -59,18 +59,6 @@
                         <a-button type="primary" @click="order(record)" v-if="userInfo.userType=='Client'">预定</a-button>
                     </div>
                 </template>
-
-<!--                <span slot="price" slot-scope="text">-->
-<!--                    <span>￥{{ text }}</span>-->
-<!--                </span>-->
-
-<!--            <span slot="action" slot-scope="text, record">-->
-<!--                    <a-button type="primary" @click="order(record)" v-if="userInfo.userType=='Client'">预定</a-button>-->
-<!--                <a-button type="primary" @click="order(record)" v-if="userInfo.userType=='HotelManager'">修改</a-button>-->
-<!--                <a-divider type="vertical"></a-divider>-->
-<!--                <a-button type="danger" @click="deleteRoom(record)" v-if="userInfo.userType=='HotelManager'">删除</a-button>-->
-<!--            </span>-->
-
         </a-table>
         </div>
         <AddRoomModal></AddRoomModal>
@@ -153,6 +141,7 @@ export default {
         ])
     },
     async mounted() {
+        data.splice(0,data.length)//清空
         this.set_currentHotelId(Number(this.$route.params.hotelId))
         await this.getHotelRoom(this.currentHotelId)
         console.log(this.roomList)
@@ -172,6 +161,8 @@ export default {
             this.cacheData.push({
                 //'roomType', 'breakfast', 'peopleNum','price','action'
                 key: i.toString(),
+                id:this.roomList[i].id,
+                hotelId:this.roomList[i].hotelId,
                 roomType: this.roomList[i].roomType,
                 breakfast: this.roomList[i].breakfast,
                 total:this.roomList[i].total,

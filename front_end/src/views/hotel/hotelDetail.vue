@@ -117,7 +117,6 @@
                     </a-tab-pane>
                     <a-tab-pane tab="历史评价" key="3">
                         <HistoryComment :comments="currentHotelInfo.historyCommentVOs"></HistoryComment>
-
                     </a-tab-pane>
                 </a-tabs>
             </div>
@@ -143,24 +142,6 @@
         secure: true,
     })
     import HistoryComment from "./components/historyComment";
-    const listData = [
-        {
-            userName: '刘钦',
-            rate:3,
-            color:'#f52de8',
-            credit:100,
-            content:
-                'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-        },
-        {
-            userName: '任桐炜',
-            rate:5,
-            color:'#7265e6',
-            credit:120,
-            content:
-                'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-        }
-    ];
      const columns = [
         {
             title: '房型',
@@ -215,7 +196,6 @@ export default {
             flag:true,
             columns,
             temp:[],
-            listData,
             modify: false,
             values:'',
             form: this.$form.createForm(this, { name: 'coordinated' }),
