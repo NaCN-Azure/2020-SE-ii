@@ -57,6 +57,7 @@ export function updateHotelInfoAPI(data) {
     })
 }
 export function searchRoomlByDateAPI(data) {
+    console.log(data)
     return axios({
         url: `${api.hotelPre}/searchRoomlByDate?hotelId=${data.hotelId}&start=${data.start}&end=${data.end}`,
         method: 'GET',

@@ -89,7 +89,15 @@
                 <a-divider></a-divider>
                 <a-tabs>
                     <a-tab-pane tab="房间信息" key="1">
-                        <div style="width: 100%; text-align: right; margin:20px 0"><a-range-picker @change="onChange" /></div>
+                        <div style="width: 100%; text-align: right; margin:20px 0"><a-range-picker v-if="userInfo.userType=='Client'" @change="onChange" /></div>
+                        <a-alert
+                                v-if="userInfo.userType=='Client'&&flag==true"
+                                message="提示"
+                                description="如果您没有选择时间段，将默认返回近一周内一直空闲的房间"
+                                type="info"
+                                show-icon
+                        />
+                        <br/>
                         <a-table
                                 v-if="userInfo.userType=='Client'"
                                 :columns="columns"
@@ -101,6 +109,7 @@
                             <a-button type="primary" @click="order(record)">预定</a-button>
                         </span>
                         </a-table>
+
                         <RoomList :rooms="currentHotelInfo.rooms" v-if="userInfo.userType=='HotelManager'"></RoomList>
                     </a-tab-pane>
                     <a-tab-pane tab="酒店详情" key="2">
@@ -203,12 +212,14 @@ export default {
     },
     data() {
         return {
+            flag:true,
             columns,
             temp:[],
             listData,
             modify: false,
             values:'',
             form: this.$form.createForm(this, { name: 'coordinated' }),
+
         }
     },
     props:{},
@@ -231,6 +242,7 @@ export default {
         this.set_currentHotelId(Number(this.$route.params.hotelId))
         await this.getHotelById()
         await this.getHotelUrlById()
+        this.getHotelRoom(this.currentHotelId)
         this.values=this.currentHotelInfo.hotelStar
         // console.log(this.currentHotelInfo)
         // console.log(this.currentHotelInfo.historyComments)
@@ -254,6 +266,7 @@ export default {
             'getHotelUrlById',
             'updateUrl',
             'searchRoomlByDate',
+            'getHotelRoom'
 
         ]),
         order(record) {
@@ -266,7 +279,8 @@ export default {
                 start:dateString[0],
                 end:dateString[1]
             })
-            console.log(this.roomList)
+            if(dateString[0]==""&&dateString[1]==""){this.flag=true}
+            else this.flag=false
         },
         saveModify() {
             this.form.validateFields((err, values) => {
@@ -285,6 +299,8 @@ export default {
                 }
             });
         },
+
+
         cancelModify() {
             this.modify = false
         },
