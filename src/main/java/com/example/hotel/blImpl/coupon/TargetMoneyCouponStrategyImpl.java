@@ -24,6 +24,7 @@ public class TargetMoneyCouponStrategyImpl implements CouponMatchStrategy {
                 && orderVO.getPrice() >= coupon.getTargetMoney()
                 && coupon.getStatus()==1)
         {
+            System.out.println("满减");
             return true;
         }
 
