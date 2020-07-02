@@ -11,6 +11,7 @@ export function loginAPI(data){
     })
 }
 export function registerAPI(data){
+    console.log("reg",data)
     return axios({
         url: `${api.userPre}/register`,
         method: 'POST',

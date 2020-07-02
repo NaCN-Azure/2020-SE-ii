@@ -248,7 +248,7 @@ export default {
             email: this.form.getFieldValue('registerUserMail'),
             password: this.form.getFieldValue('registerPassword'),
             phoneNumber: this.form.getFieldValue('registerPhoneNumber'),
-            username: this.form.getFieldValue('registerUsername'),
+            userName: this.form.getFieldValue('registerUsername'),
             birthday: this.form.getFieldValue('date').format('YYYY-MM-DD'),
             credit: 100,
             userType: 1
