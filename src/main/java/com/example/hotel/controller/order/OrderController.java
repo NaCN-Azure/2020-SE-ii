@@ -45,8 +45,7 @@ public class OrderController {
     @GetMapping("getHistoryOrders")
     public  ResponseVO retrieveHistoryOrders(@RequestParam Integer userId,
                                           @RequestParam Integer hotelId){
-        //return ResponseVO.buildSuccess(orderService.getHistoryOrders(userid,hotelId));
-        return ResponseVO.buildSuccess(true);//blimpl完成后删除
+        return ResponseVO.buildSuccess(orderService.getHistoryOrders(userId,hotelId));
     }
     @GetMapping("/{orderid}/annulOrder")
     public ResponseVO annulOrder(@PathVariable int orderid){

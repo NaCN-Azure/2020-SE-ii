@@ -33,6 +33,8 @@ public interface OrderMapper {
 
     List<Order> getHotelOrders(@Param("hotelid") int hotelid);
 
+    List<Order> getHistoryOrders(@Param("userId") Integer userId,@Param("hotelId") Integer hotelId);
+
 
 
 }

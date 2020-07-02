@@ -181,4 +181,8 @@ public class OrderServiceImpl implements OrderService {
         return ResponseVO.buildSuccess(true);
     }
 
+    @Override
+    public List<Order> getHistoryOrders(Integer userid,Integer hotelId){
+        return orderMapper.getHistoryOrders(userid,hotelId);
+    }
 }

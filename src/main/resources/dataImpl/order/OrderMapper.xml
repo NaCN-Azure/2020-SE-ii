@@ -16,6 +16,10 @@
         select * from OrderList where id=#{orderid}
     </select>
 
+    <select id="getHistoryOrders" resultMap="Order">
+        select * from OrderList where userId=#{userId} and hotelId=#{hotelId}
+    </select>
+
     <select id="getHotelOrders" resultMap="Order">
         select * from OrderList where hotelId=#{hotelid}
     </select>
