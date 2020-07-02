@@ -93,7 +93,7 @@
                     </a-select-option>
                 </a-select>
             </a-form-item>
-            <a-form-item v-bind="formItemLayout" label="房价">
+            <a-form-item v-bind="formItemLayout" label="订单价格">
                 <a-input
                         v-decorator="[
                         'price',
@@ -212,7 +212,7 @@ export default {
                         roomNum: this.form.getFieldValue('roomNum'),
                         peopleNum: this.form.getFieldValue('peopleNum'),
                         haveChild: this.form.getFieldValue('haveChild'),
-                        price: this.price
+                        price: this.form.getFieldValue('price'),
                     }
                     this.set_updateOrdersParams(data)
                     const value={record:this.updateOrdersParams,type:'change'}

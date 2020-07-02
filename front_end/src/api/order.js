@@ -44,7 +44,7 @@ export function getHotelOrdersAPI(data) {
 }
 export function updateOrdersAPI(data) {
 
-    console.log(data)
+    console.log('data',data)
     return axios({
         url: `${api.orderPre}/updateOrdersAPI`,
         method: 'POST',
