@@ -27,6 +27,9 @@ public class CouponServiceImpl implements CouponService {
     private final  TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy;
 
     private final  TimeCouponStrategyImpl timeCouponStrategy;
+
+
+
     private final CouponMapper couponMapper;
 
     private static List<CouponMatchStrategy> strategyList = new ArrayList<>();
@@ -93,16 +96,21 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public void updateCouponInfo(CouponVO couponVO){
         System.out.println("114514 1919810");//判断前后端接口是否顺利接上的测试代码
-        Coupon coupon=new Coupon();
-        coupon.setCouponName(couponVO.getName());
-        coupon.setDescription(couponVO.getDescription());
-        coupon.setCouponType(couponVO.getType());
-        coupon.setStartTime(couponVO.getStartTime());
-        coupon.setEndTime(couponVO.getEndTime());
-        coupon.setStatus(couponVO.getStatus());
-        coupon.setId(couponVO.getId());
-        couponMapper.updateCoupon(coupon.getId(),coupon.getDescription(),coupon.getCouponName(),coupon.getCouponType(),
-                coupon.getStatus(),coupon.getStartTime(),coupon.getEndTime());
+
+        System.out.println(couponVO.getEndTime());
+
+        int id=couponVO.getId();
+        String description=couponVO.getDescription();
+        String couponName=couponVO.getName();
+
+
+        String start_time=couponVO.getStartTime();
+        String end_time=couponVO.getEndTime();
+
+
+
+        couponMapper.updateCoupon(id,description,"满减优惠",3,
+                1,start_time,end_time);
     }
 
     @Override

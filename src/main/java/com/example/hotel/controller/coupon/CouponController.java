@@ -51,6 +51,9 @@ public class CouponController {
 
     @PostMapping("/updateCouponInfo")
     public ResponseVO updateCouponInfo(@RequestBody CouponVO couponVO){
+
+        System.out.println("1");
+        System.out.println(couponVO.getDescription());
         couponService.updateCouponInfo(couponVO);
         System.out.println(5);
         return ResponseVO.buildSuccess(true);
