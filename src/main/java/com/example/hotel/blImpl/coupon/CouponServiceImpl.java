@@ -126,10 +126,16 @@ public class CouponServiceImpl implements CouponService {
 
         for (int i = 0; i < hotelCoupons.size(); i++) {
             if(hotelCoupons.get(i).getCouponType()==1 && ldt.substring(0,10).equals(birthday)) {
-                availAbleCoupons.add(hotelCoupons.get(i));
+
+            }
+            else
+            {
+                hotelCoupons.get(i).setDiscount(0);
+                hotelCoupons.get(i).setDiscountMoney(0);
+                hotelCoupons.get(i).setDescription(hotelCoupons.get(i).getDescription()+"未到生日");
             }
         }
-        return availAbleCoupons;
+        return hotelCoupons;
 
 
 
