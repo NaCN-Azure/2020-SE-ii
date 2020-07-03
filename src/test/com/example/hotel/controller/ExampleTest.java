@@ -10,6 +10,7 @@ import com.example.hotel.controller.coupon.CouponController;
 import com.example.hotel.data.coupon.CouponMapper;
 import com.example.hotel.po.AD;
 import com.example.hotel.po.Coupon;
+import com.example.hotel.po.Order;
 import com.example.hotel.vo.HotelVO;
 import com.example.hotel.vo.OrderVO;
 import org.junit.Assert;
@@ -30,6 +31,8 @@ public class ExampleTest extends HotelApplicationTest{
     private SalerService salerService;
     @Autowired
     private OrderService orderService;
+
+
 
     @Autowired
     private HotelService hotelService;
@@ -103,8 +106,20 @@ public class ExampleTest extends HotelApplicationTest{
     public void testdrive_selectcoupon()
     {
         List<Coupon>  couponList=couponmapper.selectByHotelId(2);
-        Assert.assertEquals(couponList.get(0).getHotelId(),2);
-        Assert.assertEquals(couponList.get(0).getHotelId());
+        Assert.assertSame(couponList.get(0).getHotelId(),2);
+        Assert.assertSame(couponList.get(0).getHotelId(),2);
+
+
+    }
+
+
+    @Test
+    public void testdrive_order()
+    {
+        List<Order> orderlist=orderService.getUserOrders(5);
+        Assert.assertSame(orderlist.get(0).getHotelId(),3);
+
+
     }
 
 

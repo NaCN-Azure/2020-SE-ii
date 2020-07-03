@@ -26,4 +26,26 @@ public class TargetMoneySalerCouponStrategyImpl implements SalerCouponMatchStrat
     }
 
 
+    public boolean isMatch_ (OrderVO orderVO, SalerCoupon salercoupon) throws Exception{
+
+        //前置条件检查，契约式编程
+
+        if(salercoupon.getCouponType()!=3)
+        {
+            throw new Exception("wrong type exception");
+
+        }
+
+        if (salercoupon.getCouponType() == 3
+                && orderVO.getPrice() >= salercoupon.getTargetMoney()
+                && salercoupon.getStatus()==1)
+        {
+            return true;
+        }
+
+
+
+        return false;
+    }
+
 }

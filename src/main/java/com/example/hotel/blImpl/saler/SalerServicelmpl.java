@@ -7,10 +7,7 @@ import com.example.hotel.data.saler.SalerMapper;
 import com.example.hotel.po.AD;
 import com.example.hotel.po.Coupon;
 import com.example.hotel.po.SalerCoupon;
-import com.example.hotel.vo.ADVO;
-import com.example.hotel.vo.CouponVO;
-import com.example.hotel.vo.HotelTargetMoneyCouponVO;
-import com.example.hotel.vo.SalerCouponVO;
+import com.example.hotel.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,6 +113,28 @@ public class SalerServicelmpl implements SalerService {
     @Override
     public SalerCouponVO getWebCouponById(Integer webCouponId){
         return salerMapper.getWebCouponByID(webCouponId);
+    }
+
+    public boolean isMatch_ (OrderVO orderVO, SalerCoupon salercoupon) throws Exception{
+
+        //前置条件检查，契约式编程
+
+        if(salercoupon.getCouponType()!=3)
+        {
+            throw new Exception("wrong type");
+
+        }
+
+        if (salercoupon.getCouponType() == 3
+                && orderVO.getPrice() >= salercoupon.getTargetMoney()
+                && salercoupon.getStatus()==1)
+        {
+            return true;
+        }
+
+
+
+        return false;
     }
 
 

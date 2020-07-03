@@ -34,4 +34,26 @@ public class BirthdaySalerCouponImpl implements SalerCouponMatchStrategy {
         return false;
     }
 
+    public boolean isMatch_(OrderVO orderVO, SalerCoupon salercoupon) throws Exception{
+        int id=orderVO.getUserId();
+        User user=accountMapper.getAccountById(id);
+
+        //前置条件检查，契约式编程
+
+        if(salercoupon.getCouponType()!=3)
+        {
+            throw new Exception("wrong type");
+
+        }
+
+        if (salercoupon.getCouponType() == 1
+
+                && salercoupon.getStatus()==1)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }

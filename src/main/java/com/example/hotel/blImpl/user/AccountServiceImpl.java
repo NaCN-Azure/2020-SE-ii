@@ -64,6 +64,25 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    public ResponseVO registervip_ (UserVO userVO) throws Exception
+
+    {
+        //防御式编程,判断前置条件
+        if (userVO==null) {
+            throw new Exception("Failed input");
+
+        }
+
+        User user = new User();
+        BeanUtils.copyProperties(userVO,user);
+        user.setCorporationName(userVO.getCorporationName());
+        user.setIsVIP(userVO.getIsVIP());
+        int userid=user.getId();
+        accountMapper.updateVIPII(user);
+        return ResponseVO.buildSuccess();
+
+    }
+
     @Override
     public User login(UserForm userForm) {
         User user = accountMapper.getAccountByName(userForm.getEmail());
@@ -94,12 +113,18 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ResponseVO addCredit(UserVO userVO)
+    public ResponseVO addCredit  (UserVO userVO)
+
+
     {
+
+
         /*if (userVO==null) {
             System.out.println("Failed input");
             return ResponseVO.buildSuccess();
         }防御式编程*/
+
+
 
 
         int id=userVO.getId();
@@ -113,5 +138,31 @@ public class AccountServiceImpl implements AccountService {
 
 
     }
+    public ResponseVO addCredit_  (UserVO userVO) throws Exception
+
+    {
+
+        //防御式编程，判断前置条件
+        if (userVO==null) {
+            throw new Exception("Failed input");
+
+        }
+
+
+
+
+        int id=userVO.getId();
+        double credit=userVO.getCredit();
+        accountMapper.addCredit(id,credit);
+        System.out.println("chaomo3");
+
+
+        return ResponseVO.buildSuccess(true);
+
+
+
+    }
+
+
 
 }
