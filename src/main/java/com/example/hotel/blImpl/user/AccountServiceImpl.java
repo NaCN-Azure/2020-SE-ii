@@ -21,9 +21,15 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public ResponseVO registerAccount(UserVO userVO) {
+
+        /*if (userVO==null) {
+            System.out.println("Failed input");
+            return ResponseVO.buildSuccess();
+        }防御式编程*/
+
         User user = new User();
         BeanUtils.copyProperties(userVO,user);
-        User temp=accountMapper.getAccountByName(userVO.getEmail());
+        User temp=accountMapper.getAccountByName(userVO.getEmail());//属性复制
         if(temp!=null){
             return ResponseVO.buildFailure(ACCOUNT_EXIST);
         }
@@ -41,8 +47,13 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public ResponseVO registervip(UserVO userVO)
+    public ResponseVO registervip (UserVO userVO)
     {
+        /*if (userVO==null) {
+            System.out.println("Failed input");
+            return ResponseVO.buildSuccess();
+        }防御式编程*/
+
         User user = new User();
         BeanUtils.copyProperties(userVO,user);
         user.setCorporationName(userVO.getCorporationName());
@@ -85,7 +96,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public ResponseVO addCredit(UserVO userVO)
     {
-        System.out.println(userVO.getId());
+        /*if (userVO==null) {
+            System.out.println("Failed input");
+            return ResponseVO.buildSuccess();
+        }防御式编程*/
 
 
         int id=userVO.getId();

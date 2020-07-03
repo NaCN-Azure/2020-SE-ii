@@ -144,6 +144,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseVO changeOrder(OrderVO order){
+        /*if (order==null) {
+            System.out.println("Failed input");
+            return ResponseVO.buildSuccess();
+        }防御式编程*/
+
         int orderid=order.getId();
         roomDetailMapper.changeDetailRoom(orderid,order.getCheckInDate(),order.getCheckOutDate());
 //        orderMapper.deleteOrder(orderid);

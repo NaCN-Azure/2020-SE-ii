@@ -27,9 +27,26 @@ public interface AdminService {
     List<User> getAllManagers();
 
     List<User> getClientList();
+    /**
+     * 改变酒店管理人员信息
+     * @return
+     */
 
     ResponseVO changeUser(UserVO user);
+
+    /**
+     * 删除酒店管理人员信息
+     * @return
+     */
+
     ResponseVO deleteUser(int userid);
+
+
+    /**
+     * 增加酒店管理人员信息
+     * @return
+     */
+
     ResponseVO addUser(UserVO user);
 
 

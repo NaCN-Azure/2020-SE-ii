@@ -54,8 +54,17 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public ResponseVO changeUser(UserVO user){
         int userid=user.getId();
-        adminMapper.deleteUser(userid);
-        return addUser(user);
+        String email=user.getEmail();
+        String password=user.getPassword();
+        String username=user.getUserName();
+        String phonenumber=user.getPhoneNumber();
+        Double credit=user.getCredit();
+        String birthday=user.getBirthday();
+
+
+
+        adminMapper.updateUser(userid,email,password,username,phonenumber,credit,birthday);
+        return ResponseVO.buildSuccess(true);
 
 
     }
@@ -86,6 +95,8 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.deleteUser(userid);
         return ResponseVO.buildSuccess(true);
     }
+
+    //测试代码
 
     public static void main(String[] args)
 

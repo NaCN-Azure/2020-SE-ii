@@ -89,6 +89,9 @@ public class RoomServiceImpl implements RoomService {
         return rooms;
     }
 
+
+
+
     @Override
     public int getRoomCurNum(Integer roomId,String start_time,String end_time){
         List<HotelRoomDetail> detailrooms = roomDetailMapper.getAllDetailRooms(roomId);
@@ -100,11 +103,14 @@ public class RoomServiceImpl implements RoomService {
                 result--;
             }
         }
-        System.out.println("总共："+total);
-        System.out.println("还剩：" +result);
+        System.out.println("总共："+total);//显示总房间数目用来调试
+        System.out.println("还剩：" +result);//显示还剩多少房间
         if(result<0){result=0;}
         return result;
     }//动态房间数目的核心方法，用检索roomdetaiilmapper的方式找出可用房间数目
+
+
+
 
     //获得动态房间数目的桩程序
 

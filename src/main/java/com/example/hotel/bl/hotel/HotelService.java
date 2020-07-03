@@ -70,6 +70,12 @@ public interface HotelService {
 
     void updatePic(Integer id, String url);
 
+    /**
+     * 更新酒店图片
+     * @param hotelPic
+     * @return
+     */
+
     void insertPic(HotelPic hotelPic);
 
 

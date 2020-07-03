@@ -38,7 +38,20 @@ public interface CouponService {
      */
     CouponVO addHotelTargetMoneyCoupon(CouponVO couponVO);
 
+    /**
+     * 更新酒店满减优惠策略
+     * @param couponVO
+     * @return
+     */
+
     void updateCouponInfo(CouponVO couponVO);
+
+
+    /**
+     * 删除酒店满减优惠策略
+     * @param id
+     * @return
+     */
 
     void deleteCoupon(Integer id);
 }
