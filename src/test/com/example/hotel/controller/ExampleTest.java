@@ -23,7 +23,7 @@ public class ExampleTest extends HotelApplicationTest{
     @Autowired
     private CouponService service;
     @Autowired
-    private CouponMapper mapper;
+    private CouponMapper couponmapper;
     @Autowired
     private RoomService roomService;
     @Autowired
@@ -89,19 +89,22 @@ public class ExampleTest extends HotelApplicationTest{
     }
 
 
+
+    //驱动检测retrievehotel程序
     @Test
-    public void testdrive()
+    public void testdrive_retrieveHotelDetails()
     {
-        HotelVO hotelVO=new HotelVO();
-        hotelVO.setAddress("111");
-        hotelVO.setBizRegion("xidan");
-        hotelVO.setDescription("shanghai");
-        hotelVO.setId(1);
+        HotelVO hotelVO=hotelService.retrieveHotelDetails(1);
+        Assert.assertEquals(hotelVO.getHotelStar(),4);
+        Assert.assertEquals(hotelVO.getName(),"汉庭酒店");
+    }
 
-
-
-
-
+    @Test
+    public void testdrive_selectcoupon()
+    {
+        List<Coupon>  couponList=couponmapper.selectByHotelId(2);
+        Assert.assertEquals(couponList.get(0).getHotelId(),2);
+        Assert.assertEquals(couponList.get(0).getHotelId());
     }
 
 
