@@ -144,10 +144,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseVO changeOrder(OrderVO order){
-
-        order.setId(15);//这两个数据缺失导致change失败
-        order.setPhoneNumber("114514");
-
         System.out.println("进入changeOrder");
         System.out.println(order.getCheckInDate());
         System.out.println(order.getId());
