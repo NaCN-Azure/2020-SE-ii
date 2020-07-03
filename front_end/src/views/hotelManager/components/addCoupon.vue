@@ -11,17 +11,17 @@
             <a-form-item label="优惠劵类型" v-bind="formItemLayout">
                 <a-select
                         v-decorator="[
-                        'coupontype',
+                        'couponType',
                         {rules:[{required:true,message: '请选择优惠券类型'}]}
                     ]">
-                    <a-select-option value=1>生日策略</a-select-option>
-                    <a-select-option value=2>多间策略</a-select-option>
-                    <a-select-option value=3>满减策略</a-select-option>
-                    <a-select-option value=4>限时策略</a-select-option>
+                    <a-select-option value=1>生日策略优惠</a-select-option>
+                    <a-select-option value=2>多间策略优惠</a-select-option>
+                    <a-select-option value=3>满减策略优惠</a-select-option>
+                    <a-select-option value=4>限时策略优惠</a-select-option>
                 </a-select>
             </a-form-item>
             <a-form-item label="券名" v-bind="formItemLayout">
-                <a-input placeholder="请填写券名" v-decorator="['name',{rules: [{required: true,message: '请填写券名'}]}]"/>
+                <a-input placeholder="请填写券名" v-decorator="['couponName',{rules: [{required: true,message: '请填写券名'}]}]"/>
             </a-form-item>
             <a-form-item label="优惠简介" v-bind="formItemLayout">
                 <a-input
@@ -119,9 +119,9 @@
                     if (!err) {
                         const data = {
                             // 这里添加接口参数
-                            name: this.form.getFieldValue('name'),
+                            couponName: this.form.getFieldValue('couponName'),
                             description: this.form.getFieldValue('description'),
-                            type: this.form.getFieldValue('coupontype'),
+                            couponType: this.form.getFieldValue('couponType'),
                             startTime: moment(this.form.getFieldValue('date')[0]).format('YYYY-MM-DD'),
                             endTime: moment(this.form.getFieldValue('date')[1]).format('YYYY-MM-DD'),
                             targetMoney: this.form.getFieldValue('targetnum'),

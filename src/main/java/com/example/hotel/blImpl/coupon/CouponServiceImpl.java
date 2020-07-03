@@ -75,11 +75,14 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public CouponVO addHotelTargetMoneyCoupon(CouponVO couponVO) {
+        System.out.println(couponVO.getEndTime());
+        System.out.println(couponVO.getCouponName());
+        System.out.println(couponVO.getCouponType());
         //首先把VO对象转换成插入到数据库中的PO对象
         Coupon coupon = new Coupon();
-        coupon.setCouponName("满减优惠");
+        coupon.setCouponName(couponVO.getCouponName());
         coupon.setDescription(couponVO.getDescription());
-        coupon.setCouponType(3);
+        coupon.setCouponType(couponVO.getCouponType());
         coupon.setTargetMoney(couponVO.getTargetMoney());
         coupon.setHotelId(couponVO.getHotelId());
         coupon.setDiscountMoney(couponVO.getDiscountMoney());

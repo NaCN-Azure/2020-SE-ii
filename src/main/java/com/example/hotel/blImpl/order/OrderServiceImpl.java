@@ -59,11 +59,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ResponseVO addOrder(OrderVO orderVO) {
         int reserveRoomNum = orderVO.getRoomNum();
-        System.out.println("reserveRoomNum :"+reserveRoomNum);
-        int roomId=roomMapper.findIdByThree(orderVO.getHotelId(),orderVO.getRoomType()).getId();
-        System.out.println("roomType: "+orderVO.getRoomType());
-        System.out.println("roomId: "+roomId);
-        orderVO.setRoomId(roomId);///这一套日后删掉
         int curNum = roomService.getRoomCurNum(orderVO.getRoomId(),orderVO.getCheckInDate(),orderVO.getCheckOutDate());
         if(reserveRoomNum>curNum){
             return ResponseVO.buildFailure(ROOMNUM_LACK);
