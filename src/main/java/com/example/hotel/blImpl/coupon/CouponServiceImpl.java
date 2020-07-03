@@ -129,9 +129,8 @@ public class CouponServiceImpl implements CouponService {
         System.out.println("114514 1919810");//判断前后端接口是否顺利接上的测试代码
         System.out.println("114514 1919810");
         System.out.println(couponVO.getId());
-
         couponMapper.updateCoupon(couponVO.getId(),couponVO.getDescription(),couponVO.getCouponName(),couponVO.getCouponType(),
-                couponVO.getStatus(),couponVO.getStartTime(),couponVO.getEndTime());
+                couponVO.getStatus(),couponVO.getStartTime(),couponVO.getEndTime(),couponVO.getDiscountMoney(),couponVO.getDiscount(),couponVO.getTargetMoney());
     }
 
     @Override

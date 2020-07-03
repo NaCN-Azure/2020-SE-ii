@@ -17,7 +17,7 @@
     </delete>
 
     <update id="updateCoupon">
-        update Coupon set description=#{description},couponName=#{couponName},couponType=#{couponType},status=#{status},start_time=#{start_time},end_time=#{end_time}
+        update Coupon set description=#{description},couponName=#{couponName},couponType=#{couponType},status=#{status},start_time=#{start_time},end_time=#{end_time},discount_money=#{discount_money},discount=#{discount},target_money=#{target_money}
         where id=#{id}
     </update>
 
