@@ -165,7 +165,7 @@ export default {
             'orderMatchCouponList',
             'updateOrdersParams',
             'updateOrderModalVisible',
-
+            'currentOrderId'
         ]),
         
     },
@@ -213,6 +213,9 @@ export default {
                         peopleNum: this.form.getFieldValue('peopleNum'),
                         haveChild: this.form.getFieldValue('haveChild'),
                         price: this.form.getFieldValue('price'),
+                        clientName:this.form.getFieldValue('clientName'),
+                        phoneNumber:this.form.getFieldValue('clientName'),
+                        id:this.currentOrderId,
                     }
                     this.set_updateOrdersParams(data)
                     const value={record:this.updateOrdersParams,type:'change'}

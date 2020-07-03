@@ -70,6 +70,7 @@ const hotelManager = {
         addCouponVisible: false,
         activeHotelId: 0,
         couponList: [],
+        currentOrderId:"",
     },
     mutations: {
         set_orderList: function(state, data) {
@@ -124,7 +125,10 @@ const hotelManager = {
                 ...state.updateOrdersParams,
                 ...data,
             }
-        }
+        },
+        set_currentOrderId: function(state, data) {
+            state.currentOrderId =data
+        },
     },
     actions: {
         getAllOrders: async({ state, commit }) => {

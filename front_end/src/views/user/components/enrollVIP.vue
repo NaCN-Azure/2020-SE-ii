@@ -16,7 +16,7 @@
                         'VIPType',
                         {rules:[{required:true,message: '请选择注册会员的类型'}]}
                     ]">
-                    <a-select-option value=1>普通会员</a-select-option>
+                    <a-select-option v-if="userInfo.isVIP==0" value=1>普通会员</a-select-option>
                     <a-select-option value=2>企业会员</a-select-option>
                 </a-select>
             </a-form-item>
@@ -52,7 +52,8 @@
         },
         computed: {
             ...mapGetters([
-                "enrollVIPVisible"
+                "enrollVIPVisible",
+                'userInfo'
             ])
         },
         beforeCreate() {

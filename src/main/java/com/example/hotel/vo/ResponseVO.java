@@ -31,6 +31,7 @@ public class ResponseVO {
         ResponseVO response=new ResponseVO();
         response.setContent(content);
         response.setSuccess(true);
+        System.out.println(response.getContent());
         return response;
     }
 

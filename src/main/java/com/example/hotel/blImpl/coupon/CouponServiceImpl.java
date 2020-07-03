@@ -61,7 +61,9 @@ public class CouponServiceImpl implements CouponService {
                 }
             }
         }
-
+        System.out.println("+++++");
+        System.out.println(availAbleCoupons);
+        System.out.println("+++++");
         return availAbleCoupons;
     }
     //找到订单满足的所有优惠策略
@@ -69,7 +71,7 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public List<Coupon> getHotelAllCoupon(Integer hotelId) {
         List<Coupon> hotelCoupons = couponMapper.selectByHotelId(hotelId);
-        System.out.println(hotelCoupons);
+//        System.out.println(hotelCoupons);
         return hotelCoupons;
     }
 
@@ -108,6 +110,7 @@ public class CouponServiceImpl implements CouponService {
     public void deleteCoupon(Integer id){
         couponMapper.deleteCoupon(id);
     }
+
 
     @Override
     public List<Coupon> getMatchHotelCoupon(int userid, int hotelid,double orderprice,int roomNum,String checkIn, String checkOut){

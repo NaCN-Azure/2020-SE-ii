@@ -223,7 +223,9 @@ const hotel = {
             }
         },
         getOrderMatchCoupons: async({ state, commit }, data) => {
+            console.log(data)
             const res = await orderMatchCouponsAPI(data)
+            console.log(res)
             if(res){
                 commit('set_orderMatchCouponList', res)
             }

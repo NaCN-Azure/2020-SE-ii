@@ -244,6 +244,7 @@ const user = {
             console.log(res)
             if(!res){
                 commit('set_enrollVIPVisible',false)
+                window.location.reload()
                 message.success('注册成功')
             }
             else{

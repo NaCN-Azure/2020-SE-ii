@@ -126,7 +126,14 @@
                 // this.$route.push({name:'saler'})
             },
             beVIP(){
-                this.set_enrollVIPVisible(true)
+                if(this.userInfo.isVIP>0){
+                    this.$notification.open({
+                        message: '注册提示',
+                        description:
+                            '您已注册会员。请在会员中心查看详情',
+                })
+                }
+                else{this.set_enrollVIPVisible(true)}
             },
             async quit() {
                 await this.$store.dispatch('logout')

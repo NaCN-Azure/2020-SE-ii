@@ -34,9 +34,9 @@
                                 </a-tab-pane>
                                 <a-tab-pane key="1" tab="活动日期" force-render>
                                     <a-timeline>
-                                    <a-timeline-item>Create at {{item.startDate}}</a-timeline-item>
+                                    <a-timeline-item>Create at {{item.startTime}}</a-timeline-item>
                                     <a-timeline-item color="green">
-                                        End at {{item.endDate}}
+                                        End at {{item.endTime}}
                                     </a-timeline-item>
                                     </a-timeline>
                                 </a-tab-pane>
@@ -47,10 +47,8 @@
                                 </a-tab-pane>
                             </a-tabs>
                         </a-card>
-
                     </a-list-item>
                     <a-list-item>
-
                     </a-list-item>
                 </a-list>
             </a-tab-pane>
@@ -63,9 +61,6 @@
                     >
                         <a-button > <a-icon type="upload" /> upload </a-button>
                     </a-upload>
-            </a-tab-pane>
-            <a-tab-pane tab="酒店优惠策略" key="3">
-                <InfoCard :hotel="item" v-for="item in hotelList" :key="item.index" @click.native="jumpToDetails(item.id)"></InfoCard>
             </a-tab-pane>
         </a-tabs>
         <AddCouponModal></AddCouponModal>
@@ -169,7 +164,6 @@
     import { mapGetters, mapMutations, mapActions } from 'vuex'
     import AddCouponModal from './components/addCouponModal'
     import UpdateCoupon from './components/updateCoupon'
-    import InfoCard from "./components/infoCard";
     const moment = require('moment')
     export default {
         name: "saler",
@@ -185,12 +179,11 @@
         components:{
             AddCouponModal,
             UpdateCoupon,
-            InfoCard
         },
         async mounted() {
             await this.getFileList()
             await this.getAllCoupon()
-
+            console
             console.log("list",this.fileList)
         },
         computed: {

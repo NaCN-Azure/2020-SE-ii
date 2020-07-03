@@ -128,8 +128,12 @@
                 </a-table>
             </a-tab-pane>
             <a-tab-pane tab="会员中心" key="3" v-if="userInfo.userType==='Client'">
-                <div class="vip-info">
-                    <div class="info">
+                <div class="vip-info" v-if="userInfo.isVIP>0">
+                    <a-row>
+                        <a-col :span="1">
+                        </a-col>
+                        <a-col :span="9">
+                    <div class="info" >
                         <a-form :form="form" style="margin-top: 30px">
                             <a-form-item label="会员等级" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1  }">
                                 <a-rate style="font-size: 15px" :value="userInfo.isVIP" disabled/>
@@ -138,23 +142,46 @@
                                 </a-tag>
                             </a-form-item>
 
-                            <a-form-item label="合作企业" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1 }">
+                            <a-form-item v-if="userInfo.corporationName.length>0" label="合作企业" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1 }">
                                 <a-tag  color="orange">
                                     {{ userInfo.corporationName }}
                                 </a-tag>
                             </a-form-item>
+                            <a-form-item v-else :wrapper-col="{ span: 8, offset: 1  }">
+                                <a-button type="primary" @click="improveVip">
+                                    <a-icon type="rise" />
+                                    升级为企业会员
+                                </a-button>
+                            </a-form-item>
 
                         </a-form>
                     </div>
-                    <a-divider></a-divider>
-                    <a-card style="width: 300px;">
+                        </a-col>
+                        <a-col :span="12">
+                    <a-card style="width: 700px;">
                         <img
+                                v-if="userInfo.corporationName.length>0"
                                 alt="example"
-                                src="https://pic2.zhimg.com/v2-5b024964872620cbdeb69b7027e13767_r.jpg"
+                                src="https://obsidian-test.oss-cn-beijing.aliyuncs.com/QQ20200703-0.png"
+                                slot="cover"
+                                referrerPolicy="no-referrer"
+                        />
+                        <img
+                                v-else
+                                alt="example"
+                                src="https://obsidian-test.oss-cn-beijing.aliyuncs.com/QQ20200703-1.png"
                                 slot="cover"
                                 referrerPolicy="no-referrer"
                         />
                     </a-card>
+                        </a-col>
+                    </a-row>
+                </div>
+
+                <div class="register" v-else>
+                    <a-button type="primary" style="margin-left: 30px" @click="beVip">
+                        注册会员
+                    </a-button>
                 </div>
             </a-tab-pane>
         </a-tabs>
@@ -241,6 +268,7 @@
             ])
         },
         async mounted() {
+            console.log(this.userInfo)
             await this.getUserInfo()
             await this.getUserOrders()
             this.avatarValue=this.userInfo.userName
@@ -254,7 +282,8 @@
             ...mapMutations([
                 'set_addCommentVisible',
                 'set_activeOrderId',
-                'set_commentParams'
+                'set_commentParams',
+                'set_enrollVIPVisible'
             ]),
             ...mapActions([
                 'getUserInfo',
@@ -297,6 +326,12 @@
             },
             cancelCancelOrder() {
 
+            },
+            beVip(){
+                this.set_enrollVIPVisible(true)
+            },
+            improveVip(){
+                this.set_enrollVIPVisible(true)
             },
             addcomment(record){
                 this.set_activeOrderId(record.id);

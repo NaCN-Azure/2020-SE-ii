@@ -1,12 +1,16 @@
 package com.example.hotel.controller.coupon;
 
 import com.example.hotel.bl.coupon.CouponService;
+import com.example.hotel.po.Coupon;
 import com.example.hotel.vo.CouponVO;
 import com.example.hotel.vo.HotelTargetMoneyCouponVO;
 import com.example.hotel.vo.OrderVO;
 import com.example.hotel.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -37,7 +41,9 @@ public class CouponController {
                                            @RequestParam String checkOut) {
         System.out.println("mapp");
         OrderVO requestOrderVO = new OrderVO();
-        System.out.println("1");
+        System.out.println(userId);
+        System.out.println(hotelId);
+
         requestOrderVO.setUserId(userId);
         requestOrderVO.setHotelId(hotelId);
         requestOrderVO.setPrice(orderPrice);
@@ -46,7 +52,14 @@ public class CouponController {
         requestOrderVO.setCheckInDate(checkIn);
         System.out.println("3");
         requestOrderVO.setCheckOutDate(checkOut);
-        return ResponseVO.buildSuccess(couponService.getMatchOrderCoupon(requestOrderVO));
+        List<Coupon> oneList = couponService.getMatchHotelCoupon(userId,hotelId, orderPrice,roomNum,checkIn, checkOut);
+        List<Coupon> otherList=couponService.getMatchOrderCoupon(requestOrderVO);
+        for (int i = 0; i < otherList.size(); i++) {
+            oneList.add(otherList.get(i));
+        }
+        System.out.println(oneList);
+        System.out.println(otherList);
+        return ResponseVO.buildSuccess(oneList);
     }
 
     @PostMapping("/updateCouponInfo")

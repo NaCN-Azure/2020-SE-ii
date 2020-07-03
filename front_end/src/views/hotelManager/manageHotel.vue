@@ -274,6 +274,7 @@
                 'set_updateOrdersParams',
                 'set_updateOrderModalVisible',
                 'set_addCouponVisible',
+                'set_currentOrderId'
             ]),
             ...mapActions([
                 'getHotelList',
@@ -346,14 +347,18 @@
 
             },
             changeOrder(record){
+                console.log(record)
                 const data={
                     hotelId: record.hotelId,
                     hotelName: record.hotelName,
                     userId: record.userId,
                     createDate: record.createDate,
+                    id:record.id,
+                    phoneNumber:record.phoneNumber
                 }
 
                 this.set_updateOrdersParams(data);
+                this.set_currentOrderId(record.id);
                 this.set_updateOrderModalVisible(true);
                 alert(this.updateOrderModalVisible)
 

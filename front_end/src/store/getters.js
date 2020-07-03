@@ -38,6 +38,7 @@ const getters = {
   couponList: state => state.hotelManager.couponList,
     updateOrdersParams:state=>state.hotelManager.updateOrdersParams,
     updateOrderModalVisible: state=>state.hotelManager.updateOrderModalVisible,
+    currentOrderId: state=>state.hotelManager.currentOrderId,
 //saler
     allCouponlist:state=>state.saler.allCouponlist,
     updateCouponVisible:state=>state.saler.updateCouponVisible,
