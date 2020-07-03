@@ -21,11 +21,8 @@ public class TimeCouponStrategyImpl implements CouponMatchStrategy {
      */
     @Override
     public boolean isMatch(OrderVO orderVO, Coupon coupon) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        Date now = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//可以方便地修改日期格式
-        String nowtime = dateFormat.format( now );
-        LocalDateTime ldt = LocalDateTime.parse(nowtime,df);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");//可以方便地修改日期格式
+        LocalDateTime ldt = LocalDateTime.now();
         if (coupon.getCouponType() == 4
                 && ldt.isAfter(LocalDateTime.parse(coupon.getStartTime()+" 00:00:00",df))
                 && ldt.isBefore(LocalDateTime.parse(coupon.getEndTime()+" 00:00:00",df))

@@ -25,7 +25,6 @@ public class OrderController {
 
     @PostMapping("/addOrder")
     public ResponseVO reserveHotel(@RequestBody OrderVO orderVO){
-        System.out.println(orderVO.getCheckInDate());
         return orderService.addOrder(orderVO);
     }
 
@@ -67,7 +66,6 @@ public class OrderController {
 
     @PostMapping("/addComment")
     public ResponseVO writeHotelComment(@RequestBody HistoryCommentVO historyCommentVO){
-        System.out.println("chaomo1");
         return orderService.addComment(historyCommentVO);
     }
 }

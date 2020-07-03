@@ -2,9 +2,11 @@ package com.example.hotel.blImpl.coupon;
 
 import com.example.hotel.bl.coupon.CouponService;
 import com.example.hotel.bl.coupon.CouponMatchStrategy;
+import com.example.hotel.bl.saler.SalerService;
 import com.example.hotel.data.coupon.CouponMapper;
 import com.example.hotel.data.user.AccountMapper;
 import com.example.hotel.po.Coupon;
+import com.example.hotel.po.SalerCoupon;
 import com.example.hotel.po.User;
 import com.example.hotel.vo.CouponVO;
 import com.example.hotel.vo.HotelTargetMoneyCouponVO;
@@ -31,6 +33,8 @@ public class CouponServiceImpl implements CouponService {
     private static List<CouponMatchStrategy> strategyList = new ArrayList<>();
     @Autowired
     AccountMapper accountMapper;
+    @Autowired
+    SalerService salerService;
 
     @Autowired
     public CouponServiceImpl(TargetMoneyCouponStrategyImpl targetMoneyCouponStrategy,
@@ -52,6 +56,8 @@ public class CouponServiceImpl implements CouponService {
 
         List<Coupon> hotelCoupons = getHotelAllCoupon(orderVO.getHotelId());
 
+        List<SalerCoupon> webCoupons=salerService.getWebAllCoupon();
+
         List<Coupon> availAbleCoupons = new ArrayList<>();
 
         for (int i = 0; i < hotelCoupons.size(); i++) {
@@ -61,6 +67,28 @@ public class CouponServiceImpl implements CouponService {
                 }
             }
         }
+
+        for (int i = 0; i < webCoupons.size(); i++) {
+            for (CouponMatchStrategy strategy : strategyList) {
+                SalerCoupon temp=webCoupons.get(i);
+                Coupon checkcoupom=new Coupon();
+                    checkcoupom.setCouponName(temp.getCouponName());
+                    checkcoupom.setCouponType(temp.getCouponType());
+                    checkcoupom.setStatus(temp.getStatus());
+                    checkcoupom.setDescription(temp.getDescription());
+                    checkcoupom.setTargetMoney(temp.getTargetMoney());
+                    checkcoupom.setDiscount(temp.getDiscount());
+                    checkcoupom.setStartTime(temp.getStartTime());
+                    checkcoupom.setEndTime(temp.getEndTime());
+                    checkcoupom.setDiscountMoney(temp.getDiscountMoney());
+                    checkcoupom.setId(temp.getId());
+                    checkcoupom.setHotelId(temp.getHotelId());
+                if (strategy.isMatch(orderVO, checkcoupom)) {
+                    availAbleCoupons.add(checkcoupom);
+                }
+            }
+        }
+
         System.out.println("+++++");
         System.out.println(availAbleCoupons);
         System.out.println("+++++");

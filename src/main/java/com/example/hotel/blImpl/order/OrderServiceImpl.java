@@ -144,15 +144,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseVO changeOrder(OrderVO order){
-        System.out.println("进入changeOrder");
-        System.out.println(order.getCheckInDate());
-        System.out.println(order.getId());
-        System.out.println(order.getCheckOutDate());
-        System.out.println(order.getPrice());
-        System.out.println(order.getRoomNum());
-        System.out.println(order.getPeopleNum());
-        System.out.println(order.getPhoneNumber());
-        System.out.println(order.isHaveChild());
         int orderid=order.getId();
         roomDetailMapper.changeDetailRoom(orderid,order.getCheckInDate(),order.getCheckOutDate());
 //        orderMapper.deleteOrder(orderid);
