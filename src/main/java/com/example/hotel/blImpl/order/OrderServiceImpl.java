@@ -136,7 +136,7 @@ public class OrderServiceImpl implements OrderService {
             if ((cancelTime.plusDays(i)).isAfter(startTime)) {
                 accountMapper.punishCredit(userId, 15-i*5);
             }
-        }
+        }//这里扣信用：距离3、2、1天取消订单依次扣除5、10、15的信用
         orderMapper.annulOrder(orderid);
         roomDetailMapper.deleteDetailRoom(checkOrder.getId());
         return ResponseVO.buildSuccess(true);

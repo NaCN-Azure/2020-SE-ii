@@ -57,16 +57,9 @@ public class AdminServiceImpl implements AdminService {
         String email=user.getEmail();
         String password=user.getPassword();
         String username=user.getUserName();
-        String phonenumber=user.getPhoneNumber();
-        Double credit=user.getCredit();
         String birthday=user.getBirthday();
-
-
-
-        adminMapper.updateUser(userid,email,password,username,phonenumber,credit,birthday);
+        adminMapper.updateUser(userid,email,password,username,birthday);
         return ResponseVO.buildSuccess(true);
-
-
     }
 
     @Override
@@ -95,8 +88,6 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.deleteUser(userid);
         return ResponseVO.buildSuccess(true);
     }
-
-    //测试代码
 
     public static void main(String[] args)
 
