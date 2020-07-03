@@ -229,7 +229,7 @@
             ]),
         },
         async mounted() {
-            data.splice(0,data.length)
+            data.splice(0,data.length)//清空
              await this.getHotelOrders(this.manageId)
             await this.getHotelCoupon(this.manageId)
             for (let i = 0; i < this.couponList.length; i++) {
@@ -361,7 +361,7 @@
                 this.set_updateOrdersParams(data);
                 this.set_currentOrderId(record.id);
                 this.set_updateOrderModalVisible(true);
-                alert(this.updateOrderModalVisible)
+
 
 
             },

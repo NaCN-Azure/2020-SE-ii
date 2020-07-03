@@ -45,7 +45,7 @@
                     ]"
                                 :placeholder="'出生日期'"
                         />
-                        <a-date-picker v-else :default-value="moment(userInfo.birthday, 'YYYY-MM-DD')" disabled></a-date-picker>
+                        <a-date-picker v-else :value="moment(userInfo.birthday, 'YYYY-MM-DD')" disabled></a-date-picker>
                     </a-form-item>
 
                     <a-form-item label="手机号" :label-col="{ span: 3 }" :wrapper-col="{ span: 8, offset: 1 }">
