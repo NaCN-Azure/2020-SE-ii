@@ -49,8 +49,9 @@ public class HotelServiceImpl implements HotelService {
 
     private boolean check(HotelVO hotelVO,String key){
         String address=hotelVO.getAddress();
+        String bigzone=hotelVO.getBizRegion();
         String name=hotelVO.getName();
-        return address.contains(key)||name.contains(key);
+        return address.contains(key)||name.contains(key)||bigzone.contains(key);
     }
 
     @Override

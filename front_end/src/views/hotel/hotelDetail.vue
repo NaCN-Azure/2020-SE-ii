@@ -112,7 +112,7 @@
 
                         <RoomList :rooms="currentHotelInfo.rooms" v-if="userInfo.userType=='HotelManager'"></RoomList>
                     </a-tab-pane>
-                    <a-tab-pane tab="酒店详情" key="2" v-if="userInfo.userType=='Client'">
+                    <a-tab-pane tab="入住详情" key="2" v-if="userInfo.userType=='Client'">
                         <a-timeline class="hotel-detail">
                             <template  v-for="item in historyOrderList">
                                 <a-timeline-item :key="item.id"></a-timeline-item>
