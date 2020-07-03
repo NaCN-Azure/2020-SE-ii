@@ -37,6 +37,15 @@
         update OrderList set orderstate='已入住' where id=#{orderid}
     </update>
 
+    <update id="changeOrder">
+        update OrderList set checkInDate=#{checkInDate},checkOutDate=#{checkOutDate},phoneNumber=#{phoneNumber},peopleNum=#{peopleNum},haveChild=#{haveChild},price=#{price},roomNum=#{roomNum}
+        where id=#{id}
+    </update>
+
+    <select id="getId" resultMap="Order">
+        select * from OrderList where userId=#{userId} and price=#{price}
+    </select>
+
     <resultMap id="Order" type="com.example.hotel.po.Order">
     </resultMap>
 </mapper>

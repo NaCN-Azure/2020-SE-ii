@@ -92,14 +92,11 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public int getRoomCurNum(Integer roomId,String start_time,String end_time){
         List<HotelRoomDetail> detailrooms = roomDetailMapper.getAllDetailRooms(roomId);
-        System.out.println("test: ");
         int total=roomMapper.selectRoomById(roomId).getTotal();
         int result=total;
         for(int i=0;i<detailrooms.size();i++){
             HotelRoomDetail tempDetail=detailrooms.get(i);
             if(timeMatch(start_time,end_time,tempDetail.getStart_time(),tempDetail.getEnd_time())){
-                System.out.println(start_time+" "+end_time);
-                System.out.println(tempDetail.getStart_time()+" "+tempDetail.getEnd_time());
                 result--;
             }
         }

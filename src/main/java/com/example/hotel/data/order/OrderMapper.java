@@ -35,6 +35,11 @@ public interface OrderMapper {
 
     List<Order> getHistoryOrders(@Param("userId") Integer userId,@Param("hotelId") Integer hotelId);
 
+    int changeOrder(@Param("id") Integer id,@Param("checkInDate") String checkInDate,
+                    @Param("checkOutDate") String checkOutDate,@Param("phoneNumber") String phoneNumber,
+                    @Param("peopleNum") Integer peopleNum,@Param("haveChild") Integer haveChild,
+                    @Param("price") Double price,@Param("roomNum") Integer roomNum);
 
+    Order getId(@Param("userId") Integer userId,@Param("price")Double price);
 
 }
