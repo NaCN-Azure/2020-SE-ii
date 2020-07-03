@@ -146,17 +146,38 @@ public class CouponServiceImpl implements CouponService {
 
         List<Coupon> availAbleCoupons = new ArrayList<>();
 
+        List<SalerCoupon> webCoupons=salerService.getWebAllCoupon();
+
         User user=accountMapper.getAccountById(userid);
 
-        String birthday=user.getBirthday();
+        String birthday=user.getBirthday().substring(5,10);
 
         LocalDateTime nowTime= LocalDateTime.now();
 
         String ldt=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
+        for (int i = 0; i < webCoupons.size(); i++) {
+                SalerCoupon temp=webCoupons.get(i);
+                Coupon checkcoupom=new Coupon();
+                checkcoupom.setCouponName(temp.getCouponName());
+                checkcoupom.setCouponType(temp.getCouponType());
+                checkcoupom.setStatus(temp.getStatus());
+                checkcoupom.setDescription(temp.getDescription());
+                checkcoupom.setTargetMoney(temp.getTargetMoney());
+                checkcoupom.setDiscount(temp.getDiscount());
+                checkcoupom.setStartTime(temp.getStartTime());
+                checkcoupom.setEndTime(temp.getEndTime());
+                checkcoupom.setDiscountMoney(temp.getDiscountMoney());
+                checkcoupom.setId(temp.getId());
+                checkcoupom.setHotelId(temp.getHotelId());
+            if(checkcoupom.getCouponType()==1){
+                hotelCoupons.add(checkcoupom);
+            }
+        }
+
         for (int i = 0; i < hotelCoupons.size(); i++) {
             if(hotelCoupons.get(i).getCouponType()==1){
-                if( ldt.substring(0,10).equals(birthday)) {
+                if( ldt.substring(5,10).equals(birthday)) {
                     availAbleCoupons.add(hotelCoupons.get(i));
 
                 }

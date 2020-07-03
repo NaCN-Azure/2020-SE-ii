@@ -191,6 +191,7 @@ export default {
                 }else{
 
                 }
+                if(temp<0){temp=0;}
                 return temp
             },
             set:function (v) {
