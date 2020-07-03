@@ -229,6 +229,7 @@
             ]),
         },
         async mounted() {
+            data.splice(0,data.length)
              await this.getHotelOrders(this.manageId)
             await this.getHotelCoupon(this.manageId)
             for (let i = 0; i < this.couponList.length; i++) {

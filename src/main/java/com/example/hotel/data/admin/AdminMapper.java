@@ -28,8 +28,8 @@ public interface AdminMapper {
     int deleteUser(@Param("userid") int userid);
 
     int updateUser(@Param("id") Integer id,@Param("email") String email,@Param("password") String password,
-                     @Param("username") String username,@Param("phonenumber") String phonenumber,
-                     @Param("credit") Double credit,@Param("birthday") String birthday);
+                   @Param("username") String username, @Param("birthday") String birthday);
+
 
     public static void main(String[] args)
     {

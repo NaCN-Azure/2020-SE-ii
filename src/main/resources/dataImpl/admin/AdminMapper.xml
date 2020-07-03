@@ -23,6 +23,9 @@
         delete  from User where id=#{userid}
     </delete>
 
+    <update id="updateUser">
+        update User set email=#{email},password=#{password},username=#{username},birthday=#{birthday} where id=#{id}
+    </update>
 
     <update id="updateUser">
         update User set email=#{email},password=#{password},username=#{username},phonenumber=#{phonenumber},credit=#{credit},birthday=#{birthday}
