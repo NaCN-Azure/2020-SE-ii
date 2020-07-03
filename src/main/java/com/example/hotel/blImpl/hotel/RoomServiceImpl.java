@@ -50,7 +50,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void changeRoom(HotelRoom hotelRoom){
-        System.out.println(hotelRoom.getPrice()+" ()()(");
+        System.out.println(hotelRoom.getRoomType());
         int hotelId=hotelRoom.getHotelId();
         String breakfast=hotelRoom.getBreakfast().toString().equals("有")?"yes":"no";
         int peopleNum=hotelRoom.getPeopleNum();

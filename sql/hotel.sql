@@ -337,7 +337,9 @@ CREATE TABLE `User` (
 
 BEGIN;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (4,'black@qq.com','123456','测试一号','12345678919',-5,'Client',-1,'2000-08-09','',''),(5,'123@qq.com','123456','测试二号','12345678911',100,'Client',-1,'1999-07-03','',''),(6,'333@qq.com','123456','汉庭经理',NULL,NULL,'HotelManager',1,'1990-01-04','',''),(7,'111@qq.com','123456','管理者',NULL,NULL,'Admin',-1,'1980-02-06','',''),(8,'234@qq.com','123456','营销人员',NULL,NULL,'Saler',-1,'1980-02-06','',''),(9,'222@qq.com','123456','儒家经理',NULL,NULL,'HotelManager',2,'1990-01-04','','');
+INSERT INTO `User` VALUES (4,'black@qq.com','123456','测试一号','12345678919',-5,'Client',-1,'2000-08-09','',''),(5,'123@qq.com','123456','测试二号','12345678911',100,'Client',-1,'1999-07-03','',''),
+                          (6,'333@qq.com','123456','汉庭经理',NULL,NULL,'HotelManager',1,'1990-01-04','',''),(7,'111@qq.com','123456','管理者',NULL,NULL,'Admin',-1,'1980-02-06','',''),(8,'234@qq.com','123456','营销人员',NULL,NULL,'Saler',-1,'1980-02-06','',''),
+                          (9,'222@qq.com','123456','儒家经理',NULL,NULL,'HotelManager',2,'1990-01-04','',''),(10,'444@qq.com','123456','桂圆经理',NULL,NULL,'HotelManager',3,'1990-01-04','','');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 COMMIT;
 

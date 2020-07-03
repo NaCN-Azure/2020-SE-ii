@@ -26,11 +26,11 @@
                                 :value="text"
                                 @change="e => handleChange(e.target.value, record.key, col)"
                         />
-                        <a-select v-else-if="record.editable&&col==='roomType'" v-model="record.roomType"  @click="e => handleChange(e.target.value, record.key, col)" >
-                            <a-select-option value="BigBed">大床房</a-select-option>
-                            <a-select-option value="DoubleBed">双床房</a-select-option>
-                            <a-select-option value="Family">家庭房</a-select-option>
-                        </a-select>
+<!--                        <a-select v-else-if="record.editable&&col==='roomType'" v-model="record.roomType"  @click="e => handleChange(e.target.value, record.key, col)" >-->
+<!--                            <a-select-option value="BigBed">大床房</a-select-option>-->
+<!--                            <a-select-option value="DoubleBed">双床房</a-select-option>-->
+<!--                            <a-select-option value="Family">家庭房</a-select-option>-->
+<!--                        </a-select>-->
                         <a-select v-else-if="record.editable&&col==='breakfast'" v-model="record.breakfast"  @click="e => handleChange(e.target.value, record.key, col)" >
                             <a-select-option value=yes>有</a-select-option>
                             <a-select-option value=no>无</a-select-option>
