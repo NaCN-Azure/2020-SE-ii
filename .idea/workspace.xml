@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2e77bda7-e64b-43a5-90df-f423f6d4b041" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/example/hotel/controller/ExampleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/example/hotel/controller/ExampleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/总测试报告.md" beforeDir="false" afterPath="$PROJECT_DIR$/总测试报告.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/软件需求规格文档.md" beforeDir="false" afterPath="$PROJECT_DIR$/软件需求规格文档.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/front_end/package.json" />
+  </component>
+  <component name="ProjectId" id="1e8MqKUvIdr8Tt1fdhCbBaTv9dC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\程序\java个人包\软工二与黑曜石\最终\src\main\java\com\example\hotel\blImpl\coupon" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.HotelApplication">
+    <configuration name="hotel.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/hotel.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="cca9aa6a-c105-4def-949e-57663432a172" />
+      <method v="2" />
+    </configuration>
+    <configuration name="HotelApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hotel" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.hotel.HotelApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Database Script.hotel.sql" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e77bda7-e64b-43a5-90df-f423f6d4b041" name="Default Changelist" comment="" />
+      <created>1593698957220</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593698957220</updated>
+      <workItem from="1593698970771" duration="4995000" />
+      <workItem from="1593742725448" duration="16604000" />
+      <workItem from="1593771852578" duration="8096000" />
+      <workItem from="1593823318023" duration="3882000" />
+      <workItem from="1597148262165" duration="179000" />
+      <workItem from="1600591716215" duration="137000" />
+      <workItem from="1600592169857" duration="181000" />
+      <workItem from="1600592369372" duration="66000" />
+      <workItem from="1600592534411" duration="6000" />
+      <workItem from="1600594388013" duration="3000" />
+      <workItem from="1600595972004" duration="138000" />
+      <workItem from="1615815359014" duration="1541000" />
+      <workItem from="1615817557653" duration="532000" />
+      <workItem from="1644238131715" duration="512000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: &quot;nsy:加入gethistoryorder&quot;">
+      <created>1593699896321</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593699896321</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: &quot;nsy:优惠匹配和新增优惠修复&quot;">
+      <created>1593703643483</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593703643483</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: &quot;nsy:优惠匹配和新增优惠修复&quot;">
+      <created>1593703709130</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593703709130</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: &quot;nsy:新增优惠修复,roomId调试成功&quot;">
+      <created>1593743949445</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593743949445</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: &quot;nsy:changeOrder修复，前端未传入id和电话号码，已注明&quot;">
+      <created>1593747265034</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1593747265034</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: &quot;nsy:完整版本1.0，bug全修复&quot;">
+      <created>1593750497924</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1593750497924</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: &quot;nsy:完整版本2.0 网页优惠现可行&quot;">
+      <created>1593752653626</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1593752653626</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: &quot;nsy:完整版本3.0 网页优惠修复&quot;">
+      <created>1593754202169</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1593754202169</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: &quot;nsy:完整版本4.0 数据库改动&quot;">
+      <created>1593754747684</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1593754747684</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: &quot;nsy:完整版本5.0 CouponMapper的小bug解决&quot;">
+      <created>1593755288001</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1593755288001</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: &quot;nsy:完整版本6.0 商圈解决可搜&quot;">
+      <created>1593756299113</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593756299113</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: &quot;nsy:完整版本7.0&quot;">
+      <created>1593764916995</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1593764916995</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: &quot;nsy:完整版本8.0&quot;">
+      <created>1593785362095</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1593785362095</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: &quot;nsy:加入gethistoryorder&quot;" />
+    <MESSAGE value="feat: &quot;nsy:优惠匹配和新增优惠修复&quot;" />
+    <MESSAGE value="feat: &quot;nsy:新增优惠修复,roomId调试成功&quot;" />
+    <MESSAGE value="feat: &quot;nsy:changeOrder修复，前端未传入id和电话号码，已注明&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本1.0，bug全修复&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本2.0 网页优惠现可行&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本3.0 网页优惠修复&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本4.0 数据库改动&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本5.0 CouponMapper的小bug解决&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本6.0 商圈解决可搜&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本7.0&quot;" />
+    <MESSAGE value="feat: &quot;nsy:完整版本8.0&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: &quot;nsy:完整版本8.0&quot;" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1644238234489">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1644238234489" />
+    <state x="270" y="56" key="SettingsEditor" timestamp="1644238646490">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1644238646490" />
+  </component>
+</project>

@@ -113,6 +113,8 @@ public class ExampleTest extends HotelApplicationTest{
     }
 
 
+
+    //驱动检测retrievehotel程序
     @Test
     public void testdrive_order()
     {
@@ -122,6 +124,12 @@ public class ExampleTest extends HotelApplicationTest{
 
     }
 
+    }
 
+    @Test
+    public void testdrive_order()
+    {
+        List<Order> orderlist=orderService.getUserOrders(5);
+        Assert.assertSame(orderlist.get(0).getHotelId(),3);
 
 }

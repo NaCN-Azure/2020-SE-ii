@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hotel.data.user.AccountMapper">
+    <insert id="createNewAccount" parameterType="com.example.hotel.po.User" useGeneratedKeys="true" keyProperty="id">
+        insert into User(email,password,username,phonenumber,credit,usertype,hotelid,birthday)
+        values(#{email},#{password},#{userName},#{phoneNumber},#{credit},#{userType},#{hotelid},#{birthday})
+    </insert>
+
+    <insert id="registervip" parameterType="com.example.hotel.po.User" useGeneratedKeys="true" keyProperty="id">
+        insert into User(email,password,username,phonenumber,credit,usertype,hotelid,birthday,corporationName,isVIP)
+        values(#{email},#{password},#{userName},#{phoneNumber},#{credit},#{userType},#{hotelid},#{birthday},#{corporationName},#{isVIP})
+    </insert>
+
+    <delete id="deleteuser">
+        delete  from User where id=#{userid}
+    </delete>
+
+
+    <select id="getAccountByName" resultMap="User">
+        select * from User where email=#{email}
+    </select>
+    <select id="getAccountById" resultMap="User">
+        select * from User where id=#{id}
+    </select>
+
+    <update id="updateVIP">
+        update User set password=#{password},username=#{userName},phonenumber=#{phoneNumber},birthday=#{birthday},isVIP=#{isVIP},corporationName=#{corporationName}
+        where id=#{id}
+    </update>
+
+    <update id="updateVIPII" parameterType="com.example.hotel.po.SalerCoupon">
+         update User set isVIP=#{isVIP},corporationName=#{corporationName}
+        where id=#{id}
+    </update>
+
+    <update id="updateAccount">
+        update User set password=#{password},username=#{userName},phonenumber=#{phoneNumber},birthday=#{birthday}
+        where id=#{id}
+    </update>
+
+
+    <update id="addCredit">
+        update User set credit=#{credit}
+        where id=#{id}
+    </update>
+
+    <update id="plusCredit">
+        update User set credit=credit+#{credit}
+        where id=#{id}
+    </update>
+
+    <update id="punishCredit">
+        update User set credit=credit-#{credit}
+    </update>
+
+    <resultMap id="User" type="com.example.hotel.po.User">
+        <id column="id" property="id"></id>
+        <result column="email" property="email"></result>
+        <result column="password" property="password"></result>
+        <result column="username" property="userName"></result>
+        <result column="phonenumber" property="phoneNumber"></result>
+        <result column="credit" property="credit"></result>
+        <result column="usertype" property="userType"></result>
+        <result column="hotelid" property="hotelid"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="corporationName" property="corporationName"></result>
+        <result column="isVIP" property="isVIP"></result>
+    </resultMap>
+</mapper>
